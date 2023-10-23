@@ -21,41 +21,39 @@ samples["snare"] = sa.WaveObject.from_wave_file("./resources/snare.wav")
 samples["hi_hat"] = sa.WaveObject.from_wave_file("./resources/hi_hat.wav")
 samples["open_hi_hat"] = sa.WaveObject.from_wave_file("./resources/open_hi_hat.wav")
 
+samples["snare"].play()
+
+tracks = create_tracks(beat_duration,measure_duration,note_value_of_beat)
+event_seq = []
+for track in tracks:
+    event_seq += create_events(track.get("ts_seq"),track.get("track_name"))
+
+event_seq.sort(key=get_ts)
+time_zero = t.time()
+play_seq = event_seq.copy()
+event = play_seq.pop(0)
+num_playback_times = 4
+wait = False
+
+while num_playback_times:
+    now = t.time() - time_zero
+    # check if we need to play a sample
+    if (now < measure_duration):
+        if(now > event["ts"] and wait == False):
+
+            sample_id = event["sample_id"]
+            samples[sample_id].play()
+            print(str(event["sample_id"]) + " is now played at" + str(event["ts"]))
+            if play_seq:
+                event = play_seq.pop(0)
+            else:
+                t.sleep(0.001)
+                wait = True
 
 
-tracks = []
-# Create track
-new_track = True
-
-while new_track:
-    number = len(tracks)
-    track = make_track(number, beat_duration, measure_duration, note_value_of_beat)
-    tracks.append(track)
-    yes_no = input("Do you want a new track?\n y/n: ")
-    if (yes_no == "n"):
-        print("no new track")
-        new_track = False
-    elif(yes_no == "y"):
-        print("new track")
-        continue
-
-
-for i in tracks:
-    print(i)
-    j = tracks.pop()
-    print(j)
-
-
-
-
-
-
-# new_track = True
-# while new_track:
-    # yes_no = input("Do you want a new track?\n y/n: ")
-    # if (yes_no == "n"):
-    #     print("nonewtrack")
-    #     break
-    # elif(yes_no == "y"):
-    #     print("new track")
-    #     break
+    else:
+        play_seq = event_seq.copy()
+        event = play_seq.pop(0)
+        num_playback_times -= 1
+        time_zero = t.time()
+        wait = False
