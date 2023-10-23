@@ -4,6 +4,7 @@ import random as r
 import simpleaudio as sa
 
 from gui import *
+from functions import *
 
 # ___________Variables
 bpm = 120
@@ -15,30 +16,34 @@ beat_duration = 60/bpm # calculates the beat duration from the given time signat
 measure_duration = beat_duration*number_of_beats
 
 samples = {}
-samples["kick"] = sa.WaveObject.from_wave_file("./resources/Kick.wav")
-samples["snare"] = sa.WaveObject.from_wave_file("./resources/Snare.wav")
-samples["hi_hat"] = sa.WaveObject.from_wave_file("./resources/Hi_Hat.wav")
+samples["kick"] = sa.WaveObject.from_wave_file("./resources/kick.wav")
+samples["snare"] = sa.WaveObject.from_wave_file("./resources/snare.wav")
+samples["hi_hat"] = sa.WaveObject.from_wave_file("./resources/hi_hat.wav")
+samples["open_hi_hat"] = sa.WaveObject.from_wave_file("./resources/open_hi_hat.wav")
 
 
 
+tracks = []
+# Create track
+new_track = True
+
+while new_track:
+    number = len(tracks)
+    track = make_track(number, beat_duration, measure_duration, note_value_of_beat)
+    tracks.append(track)
+    yes_no = input("Do you want a new track?\n y/n: ")
+    if (yes_no == "n"):
+        print("no new track")
+        new_track = False
+    elif(yes_no == "y"):
+        print("new track")
+        continue
 
 
-#  Create track
-#new_track = True
-#while new_track:
-    # i = 0
-modifier = modifier_input(1,note_value_of_beat)
-phase = between_input(0,20,100,"phase")
-probability = between_input(100,0,100,"probability")
-print(modifier,phase,probability)
-
-ts_sequence = []
-sum = phase
-while (sum < measure_duration):
-    chance = r.random() * 100
-    if (chance < probability):
-        ts_sequence.append(sum)
-    sum += beat_duration / modifier
+for i in tracks:
+    print(i)
+    j = tracks.pop()
+    print(j)
 
 
 
