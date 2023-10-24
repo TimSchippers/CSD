@@ -96,3 +96,26 @@ def between_input(default, first, last, name):
                 print("I need a float between "+ str(first) + " and " + str(last))
 
     return number
+
+def yes_no_input(ynquestion):
+    # you can only answer y or n with the given question
+    correct_input = False
+    while (not correct_input):
+        user_input = input(str(ynquestion))
+        if (user_input == "n"):
+            correct_input = True
+        elif(user_input == "y"):
+            correct_input = True
+        else:
+            continue
+    return user_input
+
+def sample_input():
+    correct_input = False
+    while (not correct_input):
+        user_input = input("what would you name this track?\n kick, snare, hi_hat or open_hi_hat:\n")
+        if (user_input == "kick" or "snare" or "hi_hat" or "open_hi_hat"):
+            correct_input = True
+        else:
+            continue
+    return user_input

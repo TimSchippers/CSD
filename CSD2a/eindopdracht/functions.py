@@ -28,11 +28,14 @@ def make_track(track_number,beat_duration,measure_duration,note_value_of_beat):
     # makes a dictionary "track"
     track = {}
     track["track_number"] = track_number
-    track["track_name"] = input("what would you name this track? : ")
+    track["track_name"] = sample_input()
     modifier = modifier_input(1,note_value_of_beat)
     phase = between_input(0,0,100,"phase")
     probability = between_input(100,0,100,"probability")
     track["ts_seq"] = make_timestamp_sequence(beat_duration,measure_duration,modifier,phase,probability)
+    track["velocity"] = 80
+    track["channel"] = 0
+    track["note_duration"] = beat_duration/modifier
     return track
 
 def create_tracks(beat_duration, measure_duration, note_value_of_beat):
@@ -43,11 +46,12 @@ def create_tracks(beat_duration, measure_duration, note_value_of_beat):
         number = len(tracks)
         track = make_track(number, beat_duration, measure_duration, note_value_of_beat)
         tracks.append(track)
-        yes_no = input("Do you want a new track?\n y/n: ")
+        yes_no = yes_no_input("Do you want a new track?\n y/n: ")
         if (yes_no == "n"):
             print("no new track")
             new_track = False
         elif(yes_no == "y"):
             print("new track")
             continue
+
     return tracks
