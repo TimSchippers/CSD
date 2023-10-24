@@ -111,10 +111,11 @@ def yes_no_input(ynquestion):
     return user_input
 
 def sample_input():
+    # user can choose between these 4 samples
     correct_input = False
     while (not correct_input):
         user_input = input("what would you name this track?\n kick, snare, hi_hat or open_hi_hat:\n")
-        if (user_input == "kick" or "snare" or "hi_hat" or "open_hi_hat"):
+        if user_input in ["kick","snare","hi_hat","open_hi_hat"]:
             correct_input = True
         else:
             continue
