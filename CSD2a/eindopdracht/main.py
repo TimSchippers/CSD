@@ -78,7 +78,7 @@ while not stored:
             mf.addTempo(track_number,0,bpm)
             for event in track.get("ts_seq"):
                 mf.addNote(track_number,0,36,event,track.get("note_duration"),track.get("velocity"))
-                print(track_number,0,track.get("track_name"),36,event,track.get("note_duration"), track.get("velocity"))
+                # print(track_number,0,track.get("track_name"),36,event,track.get("note_duration"), track.get("velocity"))
             track_number += 1
 
         with open("sequence.midi","wb") as outf:
