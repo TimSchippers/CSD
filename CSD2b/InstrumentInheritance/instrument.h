@@ -1,3 +1,6 @@
+#ifndef _INSTRUMENT_H_
+#define _INSTRUMENT_H_
+
 #include <iostream>
 
 class Instrument
@@ -11,3 +14,5 @@ public:
 protected:
   std::string name;
 };
+
+#endif

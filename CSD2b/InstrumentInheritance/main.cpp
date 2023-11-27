@@ -1,9 +1,12 @@
-#include "instrument.h"
+#include "brass.h"
+#include "strings.h"
 
 int main()
 {
-  Instrument anInstrument("test");
+  Brass anInstrument("test");
+  Strings anInstrument2("test2");
   anInstrument.play();
+  anInstrument2.play();
   // end
   return 0;
 }
