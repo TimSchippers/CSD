@@ -9,6 +9,6 @@ Saw::~Saw(){}
 
 
 float Saw::calculateSample(float phase){
-    sample =  phase * 2 - 1;
+    sample =  phase * 2.0 - 1.0;
     return sample;
 }

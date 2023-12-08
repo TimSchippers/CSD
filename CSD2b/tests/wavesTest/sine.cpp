@@ -9,6 +9,6 @@ Sine::~Sine(){}
 
 
 float Sine::calculateSample(float phase){
-    sample =  sample = sin(pi * 2 * phase);
+    sample = sin(pi * 2 * phase);
     return sample;
 }

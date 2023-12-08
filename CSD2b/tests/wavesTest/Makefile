@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS=-Wall -std=c++1z
 LDFLAGS=
-SOURCE= writeToFile.o main.o sine.o oscillator.o
+SOURCE= writeToFile.o main.o sine.o saw.o triangle.o oscillator.o
 TARGET=example
 
 $(TARGET): $(SOURCE)
