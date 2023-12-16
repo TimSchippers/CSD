@@ -1,8 +1,9 @@
+//Ciska's main to switch between jackd and write to file
 #include <iostream>
-#include <thread>
 #include "jack_module.h"
 #include "math.h"
 #include "audioToFile.h"
+
 
 /*
  * NOTE: jack2 needs to be installed

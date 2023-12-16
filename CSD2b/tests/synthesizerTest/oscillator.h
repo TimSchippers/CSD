@@ -1,20 +1,17 @@
 #ifndef _OSCILLATOR_H_
 #define _OSCILLATOR_H_
 
-#include <cmath>
-
 class Oscillator
 {
 public:
-    Oscillator();
+    Oscillator(float frequency);
     ~Oscillator();
 
     void setSamplerate(float samplerate);
     float getSample();
     void tick();
-    void setFrequency(float frequency);
     float getFrequency();
-    float calculateSample(float phase);
+    virtual float calculateSample(float phase) = 0;
 
 protected:
     float sample;
@@ -22,7 +19,7 @@ protected:
     float waveSample;
 
 private:
-    const float pi = acos(-1);
+    float amplitude;
     float frequency;
     float samplerate;
 

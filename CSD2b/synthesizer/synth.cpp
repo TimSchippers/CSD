@@ -1,8 +1,13 @@
 #include "synth.h"
+#include "oscillator.h"
 
-Synthesizer::Synthesizer(float samplerate) : sampleStep(0),samplerate(samplerate),sample(0),phase(0),frequency(220)
+Synthesizer::Synthesizer(float samplerate) : samplerate(samplerate), sample(0), sampleStep(0), frequency(220), numOscillators(3)
 {
     sampleStepSize = 1 / samplerate;
+    for (int i = 0; i < numOscillators; i++)
+    {
+        oscillators[i] = new Oscillator;
+    }
 }
 
 Synthesizer::~Synthesizer()
@@ -13,12 +18,13 @@ Synthesizer::~Synthesizer()
 void Synthesizer::tick()
 {
     sampleStep += sampleStepSize;
-    //TODO Calculate sample
-    phase += frequency / samplerate;
-    if(phase > 1.0f) {
-        phase -= 1.0f;
+    for (int i = 0; i < numOscillators; i++)
+    {
+        oscillators[i]->setFrequency(frequency * pow(2,i));
+        sample += oscillators[i]->getSample() ;
+        oscillators[i]->tick();
     }
-    sample = sin(pi*2*phase);
+    sample /= numOscillators + 1;
     //TODO Calculate envelope
     output = sample;
 }

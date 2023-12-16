@@ -1,4 +1,6 @@
 #include <cmath>
+
+
 class Synth {
 public:
     Synth():sampleStep(0),samplerate(44100),sample(0),phase(0),frequency(220),amplitude(1),attack(0.5){};
@@ -12,6 +14,12 @@ public:
         return sample;
     }
     float calculateEnvelope(float waveSample, float attack, float time){
+        sampleStep+= sampleStepSize;
+        if(sampleStep >= samplerate){
+            sampleStep -= samplerate;
+            seconds += 1;
+        }
+        time = seconds + sampleStep;
         sample = waveSample * time / attack;
         if(time >= attack){
             sample = waveSample;
@@ -20,12 +28,6 @@ public:
     }
     void tick()
     {
-        sampleStep+= sampleSize;
-        if(sampleStep >= samplerate){
-            sampleStep -= samplerate;
-            seconds += 1;
-        }
-        time = seconds + sampleStep;
         phase += frequency / samplerate;
         if(phase > 1.0f) {
             phase -= 1.0f;
@@ -42,7 +44,7 @@ private:
     int seconds;
     float sampleStep;
     float samplerate;
-    float sampleSize = 1/samplerate;
+    float sampleStepSize = 1/samplerate;
     float sample;
     float phase;
     float frequency;
