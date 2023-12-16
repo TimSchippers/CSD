@@ -1,18 +1,23 @@
 #include "synth.h"
-#include "oscillator.h"
 
-Synthesizer::Synthesizer(float samplerate) : samplerate(samplerate), sample(0), sampleStep(0), frequency(220), numOscillators(3)
+
+Synthesizer::Synthesizer(float samplerate) : samplerate(samplerate), sample(0), sampleStep(0), frequency(440), numOscillators(3)
 {
+    std::cout << "Synth Constructor" << std::endl ;
     sampleStepSize = 1 / samplerate;
     for (int i = 0; i < numOscillators; i++)
     {
-        oscillators[i] = new Oscillator;
+        oscillators[i] = new Triangle;
     }
 }
 
 Synthesizer::~Synthesizer()
 {
-
+    std::cout << "Synth deconstructor" << std::endl ;
+    for (int i = 0; i < numOscillators; i++)
+    {
+        delete oscillators[i];
+    }
 }
 
 void Synthesizer::tick()
@@ -20,8 +25,8 @@ void Synthesizer::tick()
     sampleStep += sampleStepSize;
     for (int i = 0; i < numOscillators; i++)
     {
-        oscillators[i]->setFrequency(frequency * pow(2,i));
-        sample += oscillators[i]->getSample() ;
+        oscillators[i]->setFrequency(mtof(60));
+        sample += oscillators[i]->getWaveSample() ;
         oscillators[i]->tick();
     }
     sample /= numOscillators + 1;

@@ -1,8 +1,8 @@
 #include "oscillator.h"
-#include <iostream>
+
 
 Oscillator::Oscillator() :
-  sample(0), phase(0), waveSample(0), frequency(220), samplerate(44100)
+  phase(0), waveSample(0), frequency(220), samplerate(44100)
 {
     std::cout << "Oscillator Constructor" << std::endl ;
 }
@@ -18,8 +18,8 @@ void Oscillator::tick()
     if(phase > 1.0f) {
         phase -= 1.0f;
     }
-    waveSample = sin(pi*2*phase);
-    sample = waveSample;
+    waveSample = calculateSample(phase);
+
 
 }
 
@@ -39,7 +39,7 @@ float Oscillator::getFrequency()
     return frequency;
 }
 
-float Oscillator::getSample()
+float Oscillator::getWaveSample()
 {
-    return sample;
+    return waveSample;
 }

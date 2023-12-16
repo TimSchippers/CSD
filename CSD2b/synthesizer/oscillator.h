@@ -2,22 +2,22 @@
 #define _OSCILLATOR_H_
 
 #include <cmath>
+#include <iostream>
 
 class Oscillator
 {
 public:
     Oscillator();
-    ~Oscillator();
+    virtual ~Oscillator();
 
     void setSamplerate(float samplerate);
-    float getSample();
+    float getWaveSample();
     void tick();
+    virtual float calculateSample(float phase) = 0;
     void setFrequency(float frequency);
     float getFrequency();
-    float calculateSample(float phase);
 
 protected:
-    float sample;
     float phase;
     float waveSample;
 

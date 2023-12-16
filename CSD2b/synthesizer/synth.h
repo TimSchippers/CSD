@@ -1,4 +1,6 @@
-#include "oscillator.h"
+#include "saw.h"
+#include "sine.h"
+#include "triangle.h"
 #include <cmath>
 
 class Synthesizer
