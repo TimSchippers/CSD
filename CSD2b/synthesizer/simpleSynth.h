@@ -5,4 +5,6 @@ class SimpleSynth : public Synthesizer
 public:
     SimpleSynth(float samplerate);
     ~SimpleSynth();
+
+    void tick();
 };

@@ -16,7 +16,6 @@ public:
     virtual float calculateSample(float phase) = 0;
     void setFrequency(float frequency);
     float getFrequency();
-    virtual void testWatErGebeurt()=0;
 
 protected:
     float phase;

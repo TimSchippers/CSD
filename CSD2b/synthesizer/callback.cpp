@@ -3,7 +3,7 @@
 
 
 void CustomCallback::prepare(int rate) {
-    Synth = new SimpleSynth(samplerate);
+    Synth = new AdditiveSynth(samplerate);
     samplerate = (float) rate;
     Synth->setSamplerate(samplerate);
     std::cout << "\nsamplerate: " << samplerate << "\n";

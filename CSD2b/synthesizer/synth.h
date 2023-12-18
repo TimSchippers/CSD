@@ -1,14 +1,19 @@
+#ifndef _SYNTH_H_
+#define _SYNTH_H_
 
 #include "oscillator.h"
 #include "triangle.h"
+#include "sine.h"
+#include "saw.h"
+
 #include <cmath>
 
 class Synthesizer
 {
 public:
     Synthesizer(float samplerate);
-    ~Synthesizer();
-    void tick();
+    virtual ~Synthesizer();
+    virtual void tick() = 0;
     void setSamplerate(float samplerate);
     float getOutput();
 
@@ -27,3 +32,5 @@ protected:
     float mtof(float midiNote);
 
 };
+
+#endif

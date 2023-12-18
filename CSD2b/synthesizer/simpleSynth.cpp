@@ -14,3 +14,19 @@ SimpleSynth::~SimpleSynth()
 {
     std::cout << "SimpleSynth Deconstructor" << std::endl;
 }
+
+void SimpleSynth::tick()
+{
+    sampleStep += sampleStepSize;
+    // std::cout << "capacity = " << oscillators.capacity() << " size = " << oscillators.size() << std::endl;
+    for (int i = 0; i < numOscillators; i++)
+    {
+        oscillators[i]->setFrequency(mtof(60+i*5));
+        sample += oscillators[i]->getWaveSample() ;
+        oscillators[i]->tick();
+        // std::cout << "IK BEN IN DE LOOP MET I ; "<< i << std::endl;
+    }
+    sample /= numOscillators;
+    //TODO Calculate envelope
+    output = sample;
+}

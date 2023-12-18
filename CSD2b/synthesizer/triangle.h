@@ -8,7 +8,7 @@ public:
     ~Triangle();
 
     float calculateSample(float phase);
-    void testWatErGebeurt();
+
 
 
 };

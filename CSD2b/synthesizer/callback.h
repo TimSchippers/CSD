@@ -3,6 +3,7 @@
 
 #include "jack_module.h"
 #include "simpleSynth.h"
+#include "addSynth.h"
 
 
 class CustomCallback : public AudioCallback {

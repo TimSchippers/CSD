@@ -21,7 +21,3 @@ float Triangle::calculateSample(float phase)
     }
     return waveSample;
 }
-
-void Triangle::testWatErGebeurt() {
-    std::cout << "dit is wat er gebeurt" << std::endl;
-}
