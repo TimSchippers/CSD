@@ -30,6 +30,7 @@ int main(int argc, char **argv) {
     switch (std::cin.get()) {
       case 'q':
         running = false;
+        break;
     }
   }
 #endif

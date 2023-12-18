@@ -1,5 +1,5 @@
-#include "saw.h"
-#include "sine.h"
+
+#include "oscillator.h"
 #include "triangle.h"
 #include <cmath>
 
@@ -22,7 +22,7 @@ protected:
     float output;
     int numOscillators;
 
-    std::vector<Oscillator*> oscillators = {};
+    std::vector<Oscillator*> oscillators; //Coen gave me the tip for a vector
 
     float mtof(float midiNote);
 

@@ -19,7 +19,7 @@ void Oscillator::tick()
         phase -= 1.0f;
     }
     waveSample = calculateSample(phase);
-    std::cout << "debug a" << std::endl;
+    // std::cout << "debug a" << std::endl;
 
 
 }

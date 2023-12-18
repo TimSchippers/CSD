@@ -5,10 +5,10 @@ Synthesizer::Synthesizer(float samplerate) : samplerate(samplerate), sample(0), 
 {
     std::cout << "Synth Constructor" << std::endl ;
     sampleStepSize = 1 / samplerate;
-    for (int i = 0; i < numOscillators; i++)
-    {
-        oscillators.push_back(new Triangle);
-    };
+    // for (int i = 0; i < numOscillators; i++)
+    // {
+    //     oscillators.push_back(new Triangle);
+    // };
 }
 
 Synthesizer::~Synthesizer()
@@ -23,13 +23,13 @@ Synthesizer::~Synthesizer()
 void Synthesizer::tick()
 {
     sampleStep += sampleStepSize;
-    std::cout << "capacity = " << oscillators.capacity() << " size = " << oscillators.size() << std::endl;
+    // std::cout << "capacity = " << oscillators.capacity() << " size = " << oscillators.size() << std::endl;
     for (int i = 0; i < numOscillators; i++)
     {
         oscillators[i]->setFrequency(mtof(60+i*5));
         sample += oscillators[i]->getWaveSample() ;
         oscillators[i]->tick();
-        std::cout << "IK BEN IN DE LOOP MET I ; "<< i << std::endl;
+        // std::cout << "IK BEN IN DE LOOP MET I ; "<< i << std::endl;
     }
     sample /= numOscillators;
     //TODO Calculate envelope
