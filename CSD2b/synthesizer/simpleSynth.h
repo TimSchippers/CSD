@@ -7,4 +7,6 @@ public:
     ~SimpleSynth();
 
     void tick();
+
+    float detune = 4;
 };
