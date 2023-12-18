@@ -12,7 +12,7 @@ public:
     void setSamplerate(float samplerate);
     float getOutput();
 
-private:
+protected:
     float samplerate;
     float sample;
     long sampleStep;
@@ -22,7 +22,7 @@ private:
     float output;
     int numOscillators;
 
-    Oscillator* oscillators[];
+    std::vector<Oscillator*> oscillators = {};
 
     float mtof(float midiNote);
 

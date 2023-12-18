@@ -2,7 +2,7 @@
 #define CALLBACK_H
 
 #include "jack_module.h"
-#include "synth.h"
+#include "simpleSynth.h"
 
 
 class CustomCallback : public AudioCallback {
