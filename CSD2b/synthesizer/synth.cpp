@@ -31,6 +31,11 @@ void Synthesizer::setSamplerate(float samplerate)
     this->samplerate = samplerate;
 }
 
+void Synthesizer::setFrequency (float midiNote)
+{
+    this->frequency = mtof(midiNote);
+}
+
 float Synthesizer::mtof(float midiNote)
 {
     frequency = 440.f * pow(2.f, (midiNote - 69.0f) / 12.0f);

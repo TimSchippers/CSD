@@ -4,6 +4,7 @@
 #include "jack_module.h"
 #include "simpleSynth.h"
 #include "addSynth.h"
+#include "melody.h"
 
 
 class CustomCallback : public AudioCallback {
@@ -15,6 +16,7 @@ public:
 private:
     int samplerate = 44100;
     Synthesizer* Synth;
+    Melody melody = Melody(samplerate);
 };
 
 #endif //CALLBACK_H

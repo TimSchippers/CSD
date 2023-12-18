@@ -15,9 +15,11 @@ public:
     virtual ~Synthesizer();
     virtual void tick() = 0;
     void setSamplerate(float samplerate);
+    void setFrequency(float midiNote);
     float getOutput();
 
 protected:
+    float mtof(float midiNote);
     float samplerate;
     float sample;
     long sampleStep;
@@ -29,7 +31,6 @@ protected:
 
     std::vector<Oscillator*> oscillators; //Coen gave me the tip for a vector
 
-    float mtof(float midiNote);
 
 };
 

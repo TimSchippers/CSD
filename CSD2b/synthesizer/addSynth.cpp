@@ -19,14 +19,14 @@ void AdditiveSynth::tick()
 {
     sample = 0;
     sampleStep += sampleStepSize;
-    std::cout << "capacity = " << oscillators.capacity() << " size = " << oscillators.size() << std::endl;
+    // std::cout << "capacity = " << oscillators.capacity() << " size = " << oscillators.size() << std::endl;
     for (int i = 0; i < numOscillators; i++)
     {
-        oscillators[i]->setFrequency(110+(i*150));
+        oscillators[i]->setFrequency(frequency+(i*frequency));
         sample += (oscillators[i]->getWaveSample())/(i+1.0f) ;
         oscillators[i]->tick();
     }
-        std::cout << sample << std::endl;
+    // std::cout << sample << std::endl;
     // sample /= numOscillators;
     //TODO Calculate envelope
     output = sample;
