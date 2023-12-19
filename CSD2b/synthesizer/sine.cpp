@@ -2,12 +2,12 @@
 
 Sine::Sine() : Oscillator()
 {
-    std::cout << "Sine Constructor" << std::endl ;
+    // std::cout << "Sine Constructor" << std::endl ;
 }
 
 Sine::~Sine()
 {
-    std::cout << "Sine Deconstructor" << std::endl;
+    // std::cout << "Sine Deconstructor" << std::endl;
 }
 
 

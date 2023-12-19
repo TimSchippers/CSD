@@ -2,12 +2,12 @@
 
 Saw::Saw() : Oscillator()
 {
-        std::cout << "Saw constructor" << std::endl;
+        // std::cout << "Saw constructor" << std::endl;
 }
 
 Saw::~Saw()
 {
-        std::cout << "Saw deconstructor" << std::endl;
+        // std::cout << "Saw deconstructor" << std::endl;
 }
 
 

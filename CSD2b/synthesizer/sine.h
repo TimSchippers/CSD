@@ -1,4 +1,5 @@
 #include "oscillator.h"
+
 #include <cmath>
 
 class Sine : public Oscillator

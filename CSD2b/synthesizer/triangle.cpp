@@ -2,12 +2,12 @@
 
 Triangle::Triangle() : Oscillator()
 {
-    std::cout << "triangle constructor" << std::endl;
+    // std::cout << "triangle constructor" << std::endl;
 }
 
 Triangle::~Triangle()
 {
-    std::cout << "triangle deconstructor" << std::endl;
+    // std::cout << "triangle deconstructor" << std::endl;
 }
 
 

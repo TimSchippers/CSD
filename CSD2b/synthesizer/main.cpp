@@ -1,3 +1,5 @@
+//altered code from Ciska
+
 #include <iostream>
 #include "jack_module.h"
 #include "math.h"
@@ -16,6 +18,7 @@
 
 int main(int argc, char **argv) {
   auto callback = CustomCallback{};
+  callback.userInput();
   auto jackModule = JackModule{callback};
 
 #if WRITE_TO_FILE

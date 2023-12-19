@@ -3,10 +3,13 @@
 class SimpleSynth : public Synthesizer
 {
 public:
-    SimpleSynth(float samplerate);
+    SimpleSynth(float samplerate,int waveformSelection);
     ~SimpleSynth();
 
     void tick();
-
-    float detune = 4;
+    void setChoice(int choiceInt);
+    void setDetune(float detune);
+private:
+    int waveformSelection = 2;
+    float detune = 0;
 };

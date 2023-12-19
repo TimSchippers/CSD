@@ -3,17 +3,13 @@
 
 Synthesizer::Synthesizer(float samplerate) : samplerate(samplerate), sample(0), sampleStep(0), frequency(220)
 {
-    std::cout << "Synth Constructor" << std::endl ;
-    // sampleStepSize = 1 / samplerate;
-    // for (int i = 0; i < numOscillators; i++)
-    // {
-    //     oscillators.push_back(new Triangle);
-    // };
+    // std::cout << "Synth Constructor" << std::endl ;
+
 }
 
 Synthesizer::~Synthesizer()
 {
-    std::cout << "Synth deconstructor" << std::endl ;
+    // std::cout << "Synth deconstructor" << std::endl ;
     for (int i = 0; i < numOscillators; i++)
     {
         delete oscillators[i];

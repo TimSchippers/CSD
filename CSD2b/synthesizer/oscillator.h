@@ -10,10 +10,10 @@ public:
     Oscillator();
     virtual ~Oscillator();
 
+    void tick(); //calcculates the next sample
+    virtual float calculateSample(float phase) = 0; //every oscillator sub class has a different calculation
     void setSamplerate(float samplerate);
     float getWaveSample();
-    void tick();
-    virtual float calculateSample(float phase) = 0;
     void setFrequency(float frequency);
     float getFrequency();
 
@@ -22,7 +22,6 @@ protected:
     float waveSample;
 
 private:
-    const float pi = acos(-1);
     float frequency;
     float samplerate;
 

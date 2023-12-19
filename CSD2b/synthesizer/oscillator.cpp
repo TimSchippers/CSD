@@ -4,12 +4,12 @@
 Oscillator::Oscillator() :
   phase(0), waveSample(0), frequency(220), samplerate(44100)
 {
-    std::cout << "Oscillator Constructor" << std::endl ;
+    // std::cout << "Oscillator Constructor" << std::endl ;
 }
 
 Oscillator::~Oscillator()
 {
-    std::cout << "Oscillator Deconstructor" << std::endl ;
+    // std::cout << "Oscillator Deconstructor" << std::endl ;
 }
 
 void Oscillator::tick()
@@ -19,9 +19,6 @@ void Oscillator::tick()
         phase -= 1.0f;
     }
     waveSample = calculateSample(phase);
-    // std::cout << "debug a" << std::endl;
-
-
 }
 
 

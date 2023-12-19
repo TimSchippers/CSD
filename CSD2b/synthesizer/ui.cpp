@@ -68,5 +68,3 @@ float UI::retrieveValueInRange(float min, float max)
 
   return value;
 } // retrieveValueInRange()
-
-
