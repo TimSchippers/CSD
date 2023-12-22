@@ -8,7 +8,6 @@ public:
 
     void tick();
     void setChoice(int series);
-    float calculateHarmonics(float frequency, int index,int series);
     int series;
     float multiplier;
     float offset = 0;

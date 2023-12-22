@@ -42,29 +42,6 @@ void AdditiveSynth::tick()
     output = sample;
 }
 
-float AdditiveSynth::calculateHarmonics(float frequency,int index,int series) //series 0=ALL 1=ODD 2=EVEN
-{
-    if (series == 1){
-        if( index == 0){
-            this->frequency = frequency;
-            return frequency;
-        }
-        else
-        {
-            frequency += (frequency*(index * 2) - 1);
-            return frequency;
-        }
-    }
-    else if (series == 2){
-        frequency += (frequency * index * 2);
-        return frequency;
-    }
-    else
-    {
-        frequency += (frequency * index);
-        return frequency;
-    }
-}
 
 void AdditiveSynth::setChoice(int series)
 {
