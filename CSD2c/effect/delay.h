@@ -12,9 +12,9 @@ public:
     void write(float input);
     float read();
 
-    void setReadH();
-    void setDelayTIme();
-    void setMaxDelayTime(int milliseconds);
+    void setReadH(int numSamplesDelay);
+    void setDelayTime(float milliseconds);
+    void setMaxDelayTime(float milliseconds);
 
 private:
     float* buffer;
@@ -22,7 +22,11 @@ private:
     int writeH;
     int size;
     int numSamplesDelay;
+    float sampleRate;
     float output;
 
     float applyEffect(float sample) override;
+    inline void wrapHead(int& head) {
+      if (head >= size) head -= size;
+    }
 };

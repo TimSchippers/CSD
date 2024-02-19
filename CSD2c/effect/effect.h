@@ -1,12 +1,14 @@
 #pragma once
 
+#include <iostream>
+
 class Effect
 {
 public:
   Effect();
   virtual ~Effect();
   float processFrame(float input);
-  virtual void prepare(float sampleRate) {};
+  virtual void prepare(float sampleRate) = 0;
 
   // setters
   void setDryWet(float dryWet);

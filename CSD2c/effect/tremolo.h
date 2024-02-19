@@ -1,7 +1,6 @@
 #pragma once
 
 #include "effect.h"
-#include <iostream>
 #include <sine.h>
 
 class Tremolo : public Effect
