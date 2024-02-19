@@ -4,6 +4,7 @@
 #include "jack_module.h"
 #include "tremolo.h"
 #include "delay.h"
+#include "waveshaper.h"
 
 
 class CustomCallback : public AudioCallback {
@@ -15,6 +16,7 @@ private:
   float samplerate = 44100;
   Tremolo tremolo = Tremolo(6, 1);
   Delay delay = Delay();
+  Waveshaper waveshaper = Waveshaper(3);
 
 };
 
