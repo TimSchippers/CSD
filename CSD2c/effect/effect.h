@@ -8,7 +8,7 @@ public:
   Effect();
   virtual ~Effect();
   float processFrame(float input);
-  virtual void prepare(float sampleRate) = 0;
+  virtual void prepare(float sampleRate) { };
 
   // setters
   void setDryWet(float dryWet);
