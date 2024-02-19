@@ -4,10 +4,10 @@ CircBuffer::CircBuffer(int size, int numSampleDelay) : size(size), numSamplesDel
 {
     // buffer = (float*)malloc(size * sizeof(float));
     buffer = new float[size];
-    for (int i = 0; i < size; i++)
-    {
-       buffer[i] = 0.f;
-    }
+    // for (int i = 0; i < size; i++)
+    // {
+    //    buffer[i] = 0.f;
+    // }
     setReadH();
     std::cout << writeH << ", " << readH << std::endl;
 }
