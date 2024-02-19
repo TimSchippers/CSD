@@ -5,14 +5,14 @@ class Effect
 public:
   Effect();
   virtual ~Effect();
-  void processFrame(float input);
-  virtual void prepare(int sampleRate);
+  float processFrame(float input);
+  virtual void prepare(float sampleRate) {};
 
   // setters
   void setDryWet(float dryWet);
 
 protected:
-  virtual float applyEffect(float input);
+  virtual float applyEffect(float input) = 0;
 
 private:
     float dryVolume;
