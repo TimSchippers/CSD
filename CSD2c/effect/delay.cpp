@@ -58,6 +58,12 @@
   float Delay::applyEffect(float sample)
   {
       output = read();
-      write(sample);
+      write(sample + (output*feedbackAmount));
       return output;
   }
+
+  void Delay::setFeedbackAmount(float feedback)
+  {
+
+      feedbackAmount = feedback;
+  };

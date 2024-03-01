@@ -15,6 +15,7 @@ public:
     void setReadH(int numSamplesDelay);
     void setDelayTime(float milliseconds);
     void setMaxDelayTime(float milliseconds);
+    void setFeedbackAmount(float feedback);
 
 private:
     float* buffer;
@@ -22,6 +23,7 @@ private:
     int writeH;
     int size;
     int numSamplesDelay;
+    float feedbackAmount;
     float sampleRate;
     float output;
 
