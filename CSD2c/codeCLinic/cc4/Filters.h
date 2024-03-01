@@ -80,12 +80,11 @@ private:
 //
 struct SimpleLadder : Filter {
   double process(double input) override {
-    A = (b * input) + (a * B);
-    B = (b * A) + (a * C);
-    C = (b * B) + (a * D);
-    D = (b * C) + (a * output);
-    output = D;
-    return output;
+    A = (b * input) + (a * A);
+    B = (b * A) + (a * B);
+    C = (b * B) + (a * C);
+    D = (b * C) + (a * D); 
+    return D;
   }
   void setCoefficient(double coefficient) {
     a = coefficient;
@@ -97,7 +96,7 @@ private:
   double B{0.0};
   double C{0.0};
   double D{0.0};
-9
+
   double output;
   double b{0.0};
   double a{0.0};
@@ -111,6 +110,12 @@ private:
 struct FourSample : Filter {
   double process(double input) override {
     // Y[n] = X[n] + aY[n-4]
+    auto output = (input * b) + (mem4 * a);
+    mem4 = mem3;
+    mem3 = mem2;
+    mem2 =  mem;
+    mem = output;
+    return output;
   }
 
   void setCoefficient(double coefficient) {
@@ -119,7 +124,10 @@ struct FourSample : Filter {
   }
 
 private:
-  double feedback{0.0};
+  double mem = 0;
+  double mem2 = 0;
+  double mem3 = 0;
+  double mem4 = 0;
   double b{0.0};
   double a{0.0};
 };

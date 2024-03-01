@@ -7,7 +7,7 @@ SRC_PROJECT = main.cpp
 CODELIBRARY_PATH = ../../../../codeLibrary/
 # the modules to include
 MODULES = oscillators audio
-TARGET = example output.csv
+TARGET = example.loveJari output.csv
 
 # append shared code path prefix to modules
 MODULE_PATHS = $(addprefix $(CODELIBRARY_PATH),$(MODULES))

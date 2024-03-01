@@ -12,6 +12,7 @@
   {
       this->sampleRate = sampleRate;
       setMaxDelayTime(2000);
+      setFeedbackAmount(0.2);
       buffer = new float[size];
       for (int i = 0; i < size; i++)
       {

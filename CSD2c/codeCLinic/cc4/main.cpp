@@ -37,18 +37,31 @@ struct CustomCallback : AudioCallback {
 
 
     Saw *saw;
-    SimpleLadder filter;
+    FourSample filter;
 };
 
-#define Delta_Sequence 0
+#define Delta_Sequence 1
 
 int main() {
 
 
 #if Delta_Sequence
-    ScopedMessageThreadEnabler scopedMessageThreadEnabler;
-    CustomCallback audioSource(48000);
-    DeltaSequence::run(audioSource.filter);
+  FourSample filter;
+ 
+  filter.setCoefficient(0.5);
+
+  double input;
+
+  for (int i = -3; i < 14; i++) {
+    if (i == 0) {
+      input = 1.0;
+    } else {
+      input = 0.0;
+    }
+
+    std::cout << filter.process(input) << std::endl;
+  }
+
 #else
    auto callback = CustomCallback();
    auto jackModule = JackModule{callback};
