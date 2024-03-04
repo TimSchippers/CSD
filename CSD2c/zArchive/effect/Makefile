@@ -4,7 +4,7 @@ LDFLAGS=-ljack
 # the cpp files from the current project to include
 SRC_PROJECT = xcallback.cpp tremolo.cpp delay.cpp waveshaper.cpp effect.cpp main.cpp
 # the directory to the folder with the shared modules
-CODELIBRARY_PATH = ../../../codeLibrary/
+CODELIBRARY_PATH = ../../../../codeLibrary/
 # the modules to include
 MODULES = oscillators audio
 TARGET = example output.csv
