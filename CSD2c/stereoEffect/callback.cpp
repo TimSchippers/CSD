@@ -16,7 +16,7 @@ void CustomCallback::process(AudioBuffer buffer) {
     for (int sample = 0u; sample < numFrames; ++sample) {
       // TODO make stereo effect
       signal[channel] = saws[channel].genNextSample();
-      tremolo.applyEffect(signal[channel], signal[channel], channel);
+      tremolo.processSignal(signal[channel], signal[channel], channel);
       outputChannels[channel][sample] = signal[channel];
     }
   }
