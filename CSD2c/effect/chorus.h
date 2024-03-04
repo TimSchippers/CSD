@@ -23,6 +23,7 @@ private:
   int numSamplesDelay;
   float sampleRate;
   float output;
+  //TODO make switchable waveform
   Sine Sine;
 
   float applyEffect(float sample) override;

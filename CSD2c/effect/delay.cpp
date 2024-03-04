@@ -14,6 +14,7 @@ void Delay::prepare(float sampleRate) {
   setDelayTime(1000);
   std::cout << size << ", " << numSamplesDelay << std::endl;
 }
+//TODO fix duplicate code (make circulair buffer)
 void Delay::write(float input) {
   buffer[writeH] = input;
   writeH++;
