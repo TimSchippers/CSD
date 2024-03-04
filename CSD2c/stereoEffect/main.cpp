@@ -17,12 +17,11 @@
 int main(int argc, char **argv) {
   auto callback = CustomCallback{};
   auto jackModule = JackModule{callback};
-
 #if WRITE_TO_FILE
   AudioToFile audioToFile;
   audioToFile.write(callback);
 #else
-  jackModule.init(1, 1);
+  jackModule.init(1, 2);
 
   bool running = true;
   while (running) {

@@ -1,22 +1,24 @@
 #pragma once
 
 #include <sine.h>
+#include <iostream>
 
 class Tremolo{
 public:
   Tremolo();
   ~Tremolo();
   
-  void applyEffect(const double &input, double &output);
+  void applyEffect(const float &input, float &output, int channel);
 
   //setters and getters
   void setModRate(double freq);
   void setModDepth(double modDepth);
 private:
-  //TODO make it so it has different waves
-  Sine sine;
-  
+  int channels;
   double modDepth;
   double modRate;
   double modSignal;
+
+  //TODO make it so it has different waves
+  Sine sines[2];
 };

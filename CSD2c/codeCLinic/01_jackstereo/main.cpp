@@ -28,7 +28,7 @@ struct CustomCallback : AudioCallback {
     for (int channel = 0u; channel < numOutputChannels; ++channel) {
       for (int sample = 0u; sample < numFrames; ++sample) {
         outputChannels[channel][sample] =
-            effectChain[channel].genNextSample(inputChannels[0][sample]);
+            sines[channel].genNextSample();
       }
     }
   }
