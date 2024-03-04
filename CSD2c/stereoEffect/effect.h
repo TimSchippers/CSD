@@ -6,7 +6,7 @@ public:
   virtual ~Effect();
 
   void processSignal(const float &input, float &output, int channel);
-
+  virtual void prepare(int sampleRate) { };
   // setters
   void setDryWet(float dryWet);
 

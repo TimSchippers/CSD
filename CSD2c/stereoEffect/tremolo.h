@@ -15,6 +15,7 @@ public:
 
 protected:
   void applyEffect(const float &input, float &output, int channel) override;
+  void prepare(int sampleRate) override;
 
 private:
   int channels;

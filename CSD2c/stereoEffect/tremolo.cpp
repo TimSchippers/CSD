@@ -1,21 +1,26 @@
 #include "tremolo.h"
 
-Tremolo::Tremolo() : channels(2){
-  sines[0].prepare(44100);
-  sines[1].prepare(44100);
+Tremolo::Tremolo() : channels(2) {
+  // TODO use sample rate of main clock the main clock
+  prepare(44100);
   setModRate(6);
   setModDepth(1);
 };
+
 Tremolo::~Tremolo(){};
+
+void Tremolo::prepare(int sampleRate) {
+  for (int channel = 0; channel < channels; channel++) {
+    sines[channel].prepare(sampleRate);
+  }
+};
 
 void Tremolo::applyEffect(const float &input, float &output, int channel) {
   // transform the osc output range [-1, 1] to [0, 1]
   modSignal = sines[channel].genNextSample() * 0.5 + 0.5;
 
-  std::cout << channel << ", " << modSignal << std::endl;
   modSignal *= modDepth;
   modSignal -= 1.0f - modDepth;
-  
 
   output = input * modSignal;
 };
