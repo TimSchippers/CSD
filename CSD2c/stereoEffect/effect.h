@@ -12,6 +12,7 @@ public:
 
 protected:
   virtual void applyEffect(const float &input, float &output, int channel) = 0;
+  int channels;
 
 private:
   float dryVolume;

@@ -18,7 +18,6 @@ protected:
   void prepare(int sampleRate) override;
 
 private:
-  int channels;
   double modDepth;
   double modRate;
   double modSignal;

@@ -1,6 +1,6 @@
 #include "tremolo.h"
 
-Tremolo::Tremolo() : channels(2) {
+Tremolo::Tremolo() {
   // TODO use sample rate of main clock the main clock
   prepare(44100);
   setModRate(6);
