@@ -6,13 +6,9 @@ Waveshaper::Waveshaper(float intensity) : intensity(intensity) {}
 
 Waveshaper::~Waveshaper() {}
 
-void Waveshaper::setIntensity(float intensity)
-{
-    this->intensity = intensity;
-}
+void Waveshaper::setIntensity(float intensity) { this->intensity = intensity; }
 
-float Waveshaper::applyEffect(float sample)
-{
-    float output = atan(sample * intensity) / atan(intensity);
-    return output;
+float Waveshaper::applyEffect(float sample) {
+  float output = atan(sample * intensity) / atan(intensity);
+  return output;
 }

@@ -1,11 +1,10 @@
 #ifndef CALLBACK_H
 #define CALLBACK_H
 
+#include "delay.h"
 #include "jack_module.h"
 #include "tremolo.h"
-#include "delay.h"
 #include "waveshaper.h"
-
 
 class CustomCallback : public AudioCallback {
 public:
@@ -17,7 +16,6 @@ private:
   Tremolo tremolo = Tremolo(6, 1);
   Delay delay = Delay();
   Waveshaper waveshaper = Waveshaper(3);
-
 };
 
-#endif //CALLBACK_H
+#endif // CALLBACK_H

@@ -3,8 +3,7 @@
 #include "effect.h"
 
 #include <cmath>
-class Waveshaper : public Effect
-{
+class Waveshaper : public Effect {
 public:
   Waveshaper(float intensity);
   ~Waveshaper();

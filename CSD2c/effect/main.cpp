@@ -1,11 +1,9 @@
-#include <iostream>
-#include <thread>
+#include "audioToFile.h"
+#include "callback.h"
 #include "jack_module.h"
 #include "math.h"
-#include "callback.h"
-#include "audioToFile.h"
-
-
+#include <iostream>
+#include <thread>
 
 /*
  * NOTE: jack2 needs to be installed
@@ -16,7 +14,6 @@
  */
 
 #define WRITE_TO_FILE 0
-
 
 int main(int argc, char **argv) {
   auto callback = CustomCallback{};
@@ -31,11 +28,11 @@ int main(int argc, char **argv) {
   bool running = true;
   while (running) {
     switch (std::cin.get()) {
-      case 'q':
-        running = false;
+    case 'q':
+      running = false;
     }
   }
 #endif
-  //end the program
+  // end the program
   return 0;
 } // main()

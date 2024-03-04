@@ -83,7 +83,7 @@ struct SimpleLadder : Filter {
     A = (b * input) + (a * A);
     B = (b * A) + (a * B);
     C = (b * B) + (a * C);
-    D = (b * C) + (a * D); 
+    D = (b * C) + (a * D);
     return D;
   }
   void setCoefficient(double coefficient) {
@@ -113,7 +113,7 @@ struct FourSample : Filter {
     auto output = (input * b) + (mem4 * a);
     mem4 = mem3;
     mem3 = mem2;
-    mem2 =  mem;
+    mem2 = mem;
     mem = output;
     return output;
   }

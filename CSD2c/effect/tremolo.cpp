@@ -1,8 +1,6 @@
 #include "tremolo.h"
 
-Tremolo::Tremolo(float freq, float modDepth) :
-  modDepth(modDepth), sine(freq)
-{}
+Tremolo::Tremolo(float freq, float modDepth) : modDepth(modDepth), sine(freq) {}
 
 Tremolo::~Tremolo() {}
 

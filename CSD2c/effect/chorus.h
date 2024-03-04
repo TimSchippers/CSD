@@ -1,10 +1,10 @@
-
 #include "effect.h"
+#include <sine.h>
 
-class Delay : public Effect {
+class Chorus : public Effect {
 public:
-  Delay();
-  ~Delay();
+  Chorus();
+  ~Chorus();
 
   void prepare(float sampleRate) override;
   void write(float input);
@@ -21,9 +21,9 @@ private:
   int writeH;
   int size;
   int numSamplesDelay;
-  float feedbackAmount;
   float sampleRate;
   float output;
+  Sine Sine;
 
   float applyEffect(float sample) override;
   inline void wrapHead(int &head) {

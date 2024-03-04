@@ -1,23 +1,20 @@
 #include "iostream"
 
-
-class CircBuffer
-{
+class CircBuffer {
 public:
-    CircBuffer(int size, int numSamplesDelay);
-    ~CircBuffer();
+  CircBuffer(int size, int numSamplesDelay);
+  ~CircBuffer();
 
-    float* buffer;
-    int readH;
-    int writeH;
+  float *buffer;
+  int readH;
+  int writeH;
 
-    void write(float input);
-    float read();
+  void write(float input);
+  float read();
 
-    void setReadH();
+  void setReadH();
 
-    int size;
-    int numSamplesDelay;
-    float output;
-
+  int size;
+  int numSamplesDelay;
+  float output;
 };

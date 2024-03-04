@@ -1,9 +1,9 @@
-#include "delay.h"
+#include "chorus.h"
 
-Delay::Delay(){};
-Delay::~Delay() { delete buffer; }
+Chorus::Chorus() : sine(){};
+Chorus::~Chorus() { delete buffer; }
 
-void Delay::prepare(float sampleRate) {
+void Chorus::prepare(float sampleRate) {
   this->sampleRate = sampleRate;
   setMaxDelayTime(2000);
   setFeedbackAmount(0.2);
@@ -14,43 +14,40 @@ void Delay::prepare(float sampleRate) {
   setDelayTime(1000);
   std::cout << size << ", " << numSamplesDelay << std::endl;
 }
-void Delay::write(float input) {
+void Chorus::write(float input) {
   buffer[writeH] = input;
   writeH++;
   wrapHead(writeH);
 }
-float Delay::read() {
+float Chorus::read() {
   output = buffer[readH];
   readH++;
   wrapHead(readH);
   return output;
 }
 
-void Delay::setReadH(int numSamplesDelay) {
+void Chorus::setReadH(int numSamplesDelay) {
   readH = writeH + size - numSamplesDelay;
   wrapHead(readH);
 }
 
-void Delay::setDelayTime(float milliseconds) {
+void Chorus::setDelayTime(float milliseconds) {
+  // TODO time only between chorus delay time
   numSamplesDelay = sampleRate * (milliseconds / 1000);
-  if (numSamplesDelay > size) {
-    throw "this is bigger than the maxDelaySize";
-  }
+  // TODO check if Time exceeds buffer
   setReadH(numSamplesDelay);
 }
 
-void Delay::setMaxDelayTime(float milliseconds) {
+void Chorus::setMaxDelayTime(float milliseconds) {
   if (size < numSamplesDelay) {
     throw "this is smaller than the DelayTime";
-  } else {
-    size = sampleRate * (milliseconds / 1000);
   }
+  // TODO check if buffersize is smaller then the current delay time
+  size = sampleRate * (milliseconds / 1000);
 }
 
-float Delay::applyEffect(float sample) {
+float Chorus::applyEffect(float sample) {
   output = read();
-  write(sample + (output * feedbackAmount));
+  write(sample + (output));
   return output;
 }
-
-void Delay::setFeedbackAmount(float feedback) { feedbackAmount = feedback; };
