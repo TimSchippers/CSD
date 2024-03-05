@@ -1,10 +1,8 @@
-#pragma once
-
 #include "circularBuffer.h"
 
 CircularBuffer ::CircularBuffer() : CircularBuffer(256){};
 CircularBuffer::CircularBuffer(int size)
-    : size(size), indexReadHead(0), indexWriteHead(0) {
+    :indexWriteHead(0), indexReadHead(0),  size(size) {
   buffer = new float[size];
   for (int i = 0; i < size; i++) {
     buffer[i] = 0.0f;

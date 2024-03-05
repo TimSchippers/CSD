@@ -1,5 +1,3 @@
-#pragma once
-
 #include "delay.h"
 #include <iostream>
 #include <ostream>
@@ -8,8 +6,8 @@ Delay::Delay(float milliseconds) {
   // TODO clock = main clock
   prepare(44100);
   setMaxDelayTime(4000);
-  setDelayTime(milliseconds);
-  setFeedbackAmount(0.2f);
+  setDelayTime(milliseconds, 0.33);
+  setFeedbackAmount(0.4f);
 };
 Delay::~Delay() {
   for (int channel = 0; channel < 2; channel++) {
@@ -30,13 +28,14 @@ void Delay::applyEffect(const float &input, float &output, int channel) {
   buffer[channel]->write(input + output);
 };
 
-// setters
-void Delay::setDelayTime(float milliseconds) {
+void Delay::setDelayTime(float milliseconds, float stereoOffset) {
+  // TODO valuate stereoOffset to buffersize
   std::cout << "setting delay time in " << milliseconds << " milliseconds"
             << std::endl;
   numDelaySamples = sampleRate * (milliseconds / 1000);
   for (int channel = 0; channel < 2; channel++) {
-    buffer[channel]->setDistanceReadHead(numDelaySamples);
+    buffer[channel]->setDistanceReadHead(numDelaySamples *
+                                         (1 + (channel * stereoOffset)));
   }
 };
 

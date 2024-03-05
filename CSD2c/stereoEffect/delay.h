@@ -12,7 +12,7 @@ public:
   void prepare(int sampleRate) override;
 
   // setters
-  void setDelayTime(float milliseconds);
+  void setDelayTime(float milliseconds, float stereoOffset);
   void setMaxDelayTime(float milliseconds);
   void setFeedbackAmount(float feedback);
 
