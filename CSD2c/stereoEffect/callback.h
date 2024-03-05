@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include <saw.h>
+#include "delay.h"
 #include "jack_module.h"
 #include "tremolo.h"
 
@@ -13,7 +14,7 @@ public:
   void process(AudioBuffer buffer) override;
 
 private:
-  Tremolo tremolo;
+  Delay tremolo = Delay(300);
   Saw saws[2];
 };
 

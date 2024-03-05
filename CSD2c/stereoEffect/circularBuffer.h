@@ -1,6 +1,9 @@
 #pragma once
 
+#include <algorithm>
 #include <iostream>
+#include <iterator>
+#include <ostream>
 
 class CircularBuffer {
 public:
@@ -8,13 +11,17 @@ public:
   CircularBuffer(int size);
   ~CircularBuffer();
 
-  inline void write(float sample) {
+  void write(float sample) {
     buffer[indexWriteHead++] = sample;
+    // std::cout<<buffer[indexWriteHead-1]<<std::endl;
     wrapHead(indexWriteHead);
   };
-  inline float read() {
-    return buffer[indexWriteHead++];
+  float read() {
+    float signal = buffer[indexReadHead];
+    indexReadHead++;
+    std::cout<<signal<<std::endl;
     wrapHead(indexReadHead);
+    return signal;
   };
   // setters
   void setDistanceReadHead(int samples);
