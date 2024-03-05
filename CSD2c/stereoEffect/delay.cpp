@@ -16,7 +16,6 @@ void Delay::prepare(int sampleRate) {
 void Delay::applyEffect(const float &input, float &output, int channel) {
   output = buffer[channel]->read();
   buffer[channel]->write(input + (output * feedbackAmount));
-  //TODO increment heads
 };
 
 // setters

@@ -1,13 +1,21 @@
 #pragma once
 
+#include <iostream>
+
 class CircularBuffer {
 public:
   CircularBuffer();
   CircularBuffer(int size);
   ~CircularBuffer();
 
-  inline void write(float sample) { buffer[indexWriteHead] = sample; };
-  inline float read() { return buffer[indexWriteHead]; };
+  inline void write(float sample) {
+    buffer[indexWriteHead++] = sample;
+    wrapHead(indexWriteHead);
+  };
+  inline float read() {
+    return buffer[indexWriteHead++];
+    wrapHead(indexReadHead);
+  };
   // setters
   void setDistanceReadHead(int samples);
   void setSize(int size);

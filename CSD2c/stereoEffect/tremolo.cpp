@@ -27,9 +27,11 @@ void Tremolo::applyEffect(const float &input, float &output, int channel) {
 
 // setters and getters
 void Tremolo::setModRate(double freq) {
-  for (int channel = 0; channel < channels; channel++) {
-    sines[channel].setFrequency(freq);
-  }
+ // for (int channel = 0; channel < channels; channel++) {
+  //  sines[channel].setFrequency(freq);
+  //}
+  sines[0].setFrequency(freq);
+  sines[1].setFrequency(1.5*freq);
 }
 
 void Tremolo::setModDepth(double modDepth) { this->modDepth = modDepth; }
