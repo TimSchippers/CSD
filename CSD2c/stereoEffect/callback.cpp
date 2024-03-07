@@ -11,14 +11,14 @@ void CustomCallback::prepare(int sampleRate) {
 void CustomCallback::process(AudioBuffer buffer) {
   auto [inputChannels, outputChannels, numInputChannels, numOutputChannels,
         numFrames] = buffer;
-  float signal[2];
+  // float signal[2];
   for (int channel = 0u; channel < numOutputChannels; ++channel) {
     for (int sample = 0u; sample < numFrames; ++sample) {
-      signal[channel] = 0.2 * saws[channel].genNextSample();
-      tremolo.processSignal(signal[channel], outputChannels[channel][sample],
-                            channel);
-      // tremolo.processSignal(inputChannels[0][sample],
-      //                     outputChannels[channel][sample], channel);
+      // signal[channel] = 0.2 * saws[channel].genNextSample();
+      // tremolo.processSignal(signal[channel], outputChannels[channel][sample],
+      //                       channel);
+      tremolo.processSignal(inputChannels[0][sample],
+                            outputChannels[channel][sample], channel);
       //  outputChannels[channel][sample] = signal[channel];
     }
   }

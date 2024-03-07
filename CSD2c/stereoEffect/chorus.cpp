@@ -25,7 +25,9 @@ void Chorus::prepare(int sampleRate) {
 }
 
 void Chorus::applyEffect(const float &input, float &output, int channel) {
-  modSignal = lfos[channel].genNextSample();
+  //TODO fix grittiness
+  //Generates an LFO with an inverse polarity if effect is stereo
+  modSignal = lfos[channel].genNextSample() * (1 + (-2 * channel));
   modSignal *= modDepth;
   output = buffer[channel]->read();
   buffer[channel]->write(input);
