@@ -25,7 +25,6 @@ void Tremolo::applyEffect(const float &input, float &output, int channel) {
   output = input * modSignal;
 };
 
-// setters and getters
 void Tremolo::setModRate(double freq) {
  // for (int channel = 0; channel < channels; channel++) {
   //  sines[channel].setFrequency(freq);
