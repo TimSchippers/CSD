@@ -15,9 +15,9 @@ void CustomCallback::process(AudioBuffer buffer) {
   for (int channel = 0u; channel < numOutputChannels; ++channel) {
     for (int sample = 0u; sample < numFrames; ++sample) {
       // signal[channel] = 0.2 * saws[channel].genNextSample();
-      // tremolo.processSignal(signal[channel], outputChannels[channel][sample],
+      // effect.processSignal(signal[channel], outputChannels[channel][sample],
       //                       channel);
-      tremolo.processSignal(inputChannels[0][sample],
+      effect.processSignal(inputChannels[0][sample],
                             outputChannels[channel][sample], channel);
       //  outputChannels[channel][sample] = signal[channel];
     }

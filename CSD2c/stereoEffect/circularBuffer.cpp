@@ -2,13 +2,13 @@
 
 CircularBuffer ::CircularBuffer() : CircularBuffer(256){};
 CircularBuffer::CircularBuffer(int size)
-    :indexWriteHead(0), indexReadHead(0),  size(size) {
+    : indexWriteHead(0), indexReadHead(0), size(size) {
   buffer = new float[size];
   for (int i = 0; i < size; i++) {
     buffer[i] = 0.0f;
   }
-  //buffer = (float *)malloc(size * sizeof(float));
-  //memset(buffer, 0, size * sizeof(float));
+  // buffer = (float *)malloc(size * sizeof(float));
+  // memset(buffer, 0, size * sizeof(float));
 };
 CircularBuffer::~CircularBuffer() { free(buffer); };
 
@@ -17,7 +17,8 @@ void CircularBuffer::setDistanceReadHead(int samples) {
   distance = samples;
   indexReadHead = indexWriteHead - distance;
   wrapHead(indexReadHead);
-  std::cout << "index read " << indexReadHead << " index write "<< indexWriteHead << std::endl;
+  // std::cout << "index read " << indexReadHead << " index write "<<
+  // indexWriteHead << std::endl;
 };
 
 void CircularBuffer::setSize(int size) {

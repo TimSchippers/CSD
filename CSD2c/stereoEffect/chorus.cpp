@@ -25,8 +25,8 @@ void Chorus::prepare(int sampleRate) {
 }
 
 void Chorus::applyEffect(const float &input, float &output, int channel) {
-  //TODO fix grittiness
-  //Generates an LFO with an inverse polarity if effect is stereo
+  // TODO fix grittiness (interpolate the heads)
+  // Generates an LFO with an inverse polarity if effect is stereo
   modSignal = lfos[channel].genNextSample() * (1 + (-2 * channel));
   modSignal *= modDepth;
   output = buffer[channel]->read();
@@ -36,8 +36,6 @@ void Chorus::applyEffect(const float &input, float &output, int channel) {
 
 void Chorus::setDelayTime(float milliseconds) {
   // TODO valuate stereoOffset to buffersize
-  std::cout << "setting delay time in " << milliseconds << " milliseconds"
-            << std::endl;
   numDelaySamples = sampleRate * (milliseconds / 1000);
   for (int channel = 0; channel < 2; channel++) {
     buffer[channel]->setDistanceReadHead(numDelaySamples);
