@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ostream>
 
 struct Interpolation {
   // nearest neighbor mapping based on Ciska Vriezenga's code
@@ -28,8 +29,8 @@ struct Interpolation {
 
   // returns the interpolation between 2 values where (float)value is a point in
   // the closed unit interval [0, 1]
-  // based on a linear interpolation found on
-  // https://paulbourke.net/miscellaneous/interpolation/
+  //    based on a linear interpolation found on
+  //    https://paulbourke.net/miscellaneous/interpolation/
   static float linearInterpolation(float value, float point1, float point2) {
     // TODO check if value is in the closed interval
     return (point1 * (1 - value) + point2 * value);
@@ -37,17 +38,19 @@ struct Interpolation {
 
   // returns the interpolation between 2 values with a cosinic "smoothing"
   // where (float)value is a point in the closed unit interval [0, 1]
-  //  based on a cosine interpolation found on
-  //  https://paulbourke.net/miscellaneous/interpolation/
+  //   based on a cosine interpolation found on
+  //   https://paulbourke.net/miscellaneous/interpolation/
   static float cosineInterpolation(float value, float point1, float point2) {
     // TODO make pi (4atan(1)) a variable so it is just calculated once
     float cosineValue = (1 - cos(value * (4 * atan(1)))) / 2;
     return (point1 * (1 - cosineValue) + point2 * cosineValue);
   }
 
-  // TODO explain
-  //  based on a cubic interpolation found on
-  //  https://paulbourke.net/miscellaneous/interpolation/
+  // returns te interpolation with more continuity than cosinic. point1 to
+  // point2 is still the range but uses point0 as the point before point1 and
+  // point3 as the point after point2.
+  //    based on a cubic interpolation found on
+  //    https://paulbourke.net/miscellaneous/interpolation/
   static float cubicInterpolation(float value, float point0, float point1,
                                   float point2, float point3) {
     float valueSquare = value * value;

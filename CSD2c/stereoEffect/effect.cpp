@@ -1,6 +1,6 @@
 #include "effect.h"
 
-Effect::Effect() : channels(2){ setDryWet(0.47); };
+Effect::Effect() : channels(2){ setDryWet(1.0f); };
 
 Effect::~Effect() {}
 

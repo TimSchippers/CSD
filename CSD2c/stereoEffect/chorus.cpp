@@ -5,7 +5,7 @@
 Chorus::Chorus(float milliseconds) : delayTime(milliseconds) {
   // TODO clock = main clock
   prepare(44100);
-  setMaxDelayTime(30);
+  setMaxDelayTime(3000);
   setDelayTime(delayTime);
 };
 Chorus::~Chorus() {
@@ -20,18 +20,18 @@ void Chorus::prepare(int sampleRate) {
   for (int channel = 0; channel < 2; channel++) {
     buffer[channel] = new CircularBuffer;
     lfos[channel].prepare(sampleRate);
-    lfos[channel].setFrequency(2);
+    lfos[channel].setFrequency(0.5);
   }
 }
 
 void Chorus::applyEffect(const float &input, float &output, int channel) {
-  // TODO fix grittiness (interpolate the heads)
+  // TODO fix grittiness 
   // Generates an LFO with an inverse polarity if effect is stereo
-  modSignal = lfos[channel].genNextSample() * (1 + (-2 * channel));
-  modSignal *= modDepth;
-  output = buffer[channel]->read();
+  modSignal[channel] = lfos[channel].genNextSample() * (1 + (-2 * channel));
+  modSignal[channel] *= modDepth;
+  output = buffer[channel]->readLinear();
   buffer[channel]->write(input);
-  setDelayTime(delayTime + modSignal);
+  setDelayTime(delayTime + modSignal[channel]);
 };
 
 void Chorus::setDelayTime(float milliseconds) {

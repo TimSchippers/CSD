@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-#include <saw.h>
-#include "delay.h"
+#include "chorus.h"
 #include "jack_module.h"
 #include "tremolo.h"
+#include <saw.h>
 
 class CustomCallback : public AudioCallback {
 public:
@@ -14,7 +14,7 @@ public:
   void process(AudioBuffer buffer) override;
 
 private:
-  Delay effect = Delay(300);
+  Chorus effect = Chorus(20);
   Saw saws[2];
 };
 

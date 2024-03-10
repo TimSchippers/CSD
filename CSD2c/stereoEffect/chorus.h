@@ -2,7 +2,7 @@
 
 #include "effect.h"
 #include "circularBuffer.h"
-#include <sine.h>
+#include <triangle.h>
 
 class Chorus : public Effect {
 public:
@@ -23,13 +23,13 @@ private:
   // TODO change to vector to have an modular amount of buffers
   CircularBuffer *buffer[2];
   // TODO more waveforms
-  Sine lfos[2];
+  Triangle lfos[2];
   int sampleRate;
   double delayTime;
   //TODO duplicate code (multiple layers inheritence?)
   float numDelaySamples;
   float numMaxDelaySamples;
-  double modDepth = 2;
+  double modDepth = 9;
   double modRate;
-  double modSignal;
+  double modSignal[2];
 };

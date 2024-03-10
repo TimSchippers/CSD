@@ -1,8 +1,8 @@
 #pragma once
 
-#include <algorithm>
+#include "interpolation.cpp"
 #include <iostream>
-#include <iterator>
+#include <ostream>
 
 class CircularBuffer {
 public:
@@ -11,7 +11,8 @@ public:
   ~CircularBuffer();
 
   inline void write(float sample) {
-    buffer[indexWriteHead++] = sample;
+    buffer[indexWriteHead] = sample;
+    indexWriteHead++;
     wrapHead(indexWriteHead);
   };
 
@@ -22,8 +23,20 @@ public:
     return signal;
   };
 
+  inline float readLinear() {
+    indexReadHead = (int)indexReadHeadFloat;
+    float indexRemainder = indexReadHeadFloat - indexReadHead;
+    int nextIndex = indexReadHead + 1;
+    wrapHead(nextIndex);
+    float signal = Interpolation::linearInterpolation(
+        indexRemainder, buffer[indexReadHead], buffer[nextIndex]);
+    indexReadHeadFloat++;
+    wrapHeadFloat(indexReadHeadFloat);
+    return signal;
+  }
+
   // setters
-  void setDistanceReadHead(int samples);
+  void setDistanceReadHead(float samples);
   void setSize(int size);
 
 private:
@@ -33,12 +46,19 @@ private:
     else if (head < 0)
       head += size;
   }
+  inline void wrapHeadFloat(float &head) {
+    if (head >= size)
+      head -= size;
+    else if (head < 0)
+      head += size;
+  }
 
   int indexWriteHead;
   int indexReadHead;
+  float indexReadHeadFloat;
 
   int size;
-  int distance;
+  float distance;
 
   float *buffer;
 };
