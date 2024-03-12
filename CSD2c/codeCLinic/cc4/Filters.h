@@ -110,11 +110,11 @@ private:
 struct FourSample : Filter {
   double process(double input) override {
     // Y[n] = X[n] + aY[n-4]
-    auto output = (input * b) + (mem4 * a);
-    mem4 = mem3;
-    mem3 = mem2;
-    mem2 = mem;
-    mem = output;
+    auto output = (input * b) + (memoryspot4 * a);
+    memoryspot4 = memoryspot3;
+    memoryspot3 = memoryspot2;
+    memoryspot2 = memoryspot1;
+    memoryspot1 = output;
     return output;
   }
 
@@ -124,10 +124,10 @@ struct FourSample : Filter {
   }
 
 private:
-  double mem = 0;
-  double mem2 = 0;
-  double mem3 = 0;
-  double mem4 = 0;
+  double memoryspot1 = 0;
+  double memoryspot2 = 0;
+  double memoryspot3 = 0;
+  double memoryspot4 = 0;
   double b{0.0};
   double a{0.0};
 };

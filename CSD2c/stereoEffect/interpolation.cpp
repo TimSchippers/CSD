@@ -33,7 +33,7 @@ struct Interpolation {
   //    https://paulbourke.net/miscellaneous/interpolation/
   static float linearInterpolation(float value, float point1, float point2) {
     // TODO check if value is in the closed interval
-    return (point1 * (1 - value) + point2 * value);
+    return (point1 * (1.0f - value) + point2 * value);
   }
 
   // returns the interpolation between 2 values with a cosinic "smoothing"
