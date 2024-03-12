@@ -25,13 +25,12 @@ void Chorus::prepare(int sampleRate) {
 }
 
 void Chorus::applyEffect(const float &input, float &output, int channel) {
-  // TODO fix grittiness 
   // Generates an LFO with an inverse polarity at the Right channel if effect is stereo
   modSignal[channel] = lfos[channel].genNextSample() * (1 + (-2 * channel));
   modSignal[channel] *= modDepth;
+  setDelayTime(delayTime + modSignal[channel]);
   output = buffer[channel]->readLinear();
   buffer[channel]->write(input);
-  setDelayTime(delayTime + modSignal[channel]);
 };
 
 void Chorus::setDelayTime(float milliseconds) {
