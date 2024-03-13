@@ -49,3 +49,5 @@ void Delay::setMaxDelayTime(float milliseconds) {
 };
 
 void Delay::setFeedbackAmount(float feedback) { feedbackAmount = feedback; };
+
+float Delay::getDelayTime(){ return numDelaySamples / sampleRate * 1000;};

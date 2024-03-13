@@ -11,10 +11,11 @@ public:
   void applyEffect(const float &intput, float &output, int channel) override;
   void prepare(int sampleRate) override;
 
-  // setters
+  // setters & getters
   void setDelayTime(float milliseconds, float stereoOffset);
   void setMaxDelayTime(float milliseconds);
   void setFeedbackAmount(float feedback);
+  float getDelayTime();
 
 private:
   // TODO change to vector to have an modular amount of buffers
