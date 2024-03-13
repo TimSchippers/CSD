@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "chorus.h"
+#include "allPassFilter.h"
 #include "jack_module.h"
 #include "tremolo.h"
 #include <saw.h>
@@ -14,7 +14,7 @@ public:
   void process(AudioBuffer buffer) override;
 
 private:
-  Chorus effect = Chorus(20);
+  AllPassFilter effect = AllPassFilter(20, 0);
   Saw saws[2];
 };
 

@@ -1,13 +1,24 @@
 #include "allPassFilter.h"
+#include <iostream>
+#include <ostream>
 
 AllPassFilter::AllPassFilter(float milliseconds, float feedback)
     : feedbackAmount(feedback) {
+  samplerate = 44100;
+  for (int channel = 0; channel < 2; channel++) {
+    buffer[channel] = new CircularBuffer;
+  }
   setDelayTime(milliseconds);
 };
-AllPassFilter::~AllPassFilter(){};
+AllPassFilter::~AllPassFilter(){
+  for (int channel = 0; channel < 2; channel++) {
+   delete(buffer[channel]); 
+  }
+};
 
-void AllPassFilter::ApplyFilter(float &input, float &output, int channel) {
-  float sample = buffer[channel]->readLinear();
+void AllPassFilter::ApplyFilter(const float &input, float &output,
+                                int channel) {
+  float sample = buffer[channel]->read();
   output = -feedbackAmount * input + sample + feedbackAmount * sample;
   buffer[channel]->write(input + sample * feedbackAmount);
 };
@@ -15,7 +26,7 @@ void AllPassFilter::setFeedback(float feedback) { feedbackAmount = feedback; };
 
 void AllPassFilter::setDelayTime(float milliseconds) {
   numSamplesDelay = samplerate * (milliseconds / 1000);
-  for (int channel; channel > 2; channel++) {
+  for (int channel = 0; channel < 2; channel++) {
     buffer[channel]->setSize(numSamplesDelay + 1);
     buffer[channel]->setDistanceReadHead(numSamplesDelay);
   }

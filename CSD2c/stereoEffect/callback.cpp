@@ -17,7 +17,7 @@ void CustomCallback::process(AudioBuffer buffer) {
      // signal[channel] = 0.2 * saws[channel].genNextSample();
       //effect.processSignal(signal[channel], outputChannels[channel][sample],
        //                    channel);
-       effect.processSignal(inputChannels[0][sample],
+       effect.ApplyFilter(inputChannels[0][sample],
                            outputChannels[channel][sample], channel);
     }
   }
