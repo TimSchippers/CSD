@@ -16,7 +16,7 @@ AllPassFilter::~AllPassFilter(){
   }
 };
 
-void AllPassFilter::ApplyFilter(const float &input, float &output,
+void AllPassFilter::applyFilter(const float &input, float &output,
                                 int channel) {
   float sample = buffer[channel]->read();
   output = -feedbackAmount * input + sample + feedbackAmount * sample;

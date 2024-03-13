@@ -16,4 +16,9 @@ private:
 
   float reverbTime;
   float samplerate;
+  float combFilterSignal;
+  float apfSignal;
+
+
+  int check;
 };

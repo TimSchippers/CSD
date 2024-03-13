@@ -7,7 +7,7 @@ public:
   AllPassFilter(float milliseconds, float feedback);
   ~AllPassFilter();
 
-  void ApplyFilter(const float &input, float &output, int channel);
+  void applyFilter(const float &input, float &output, int channel);
   void setFeedback(float feedback);
   void setDelayTime(float milliseconds);
 

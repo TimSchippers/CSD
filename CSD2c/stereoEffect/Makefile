@@ -2,7 +2,7 @@ CXX= g++
 CXXFLAGS = -I/usr/local/include -Wall -std=c++20
 LDFLAGS=-ljack
 # the cpp files from the current project to include
-SRC_PROJECT = callback.cpp main.cpp tremolo.cpp effect.cpp delay.cpp circularBuffer.cpp	chorus.cpp interpolation.cpp allPassFilter.cpp
+SRC_PROJECT = callback.cpp main.cpp tremolo.cpp effect.cpp delay.cpp circularBuffer.cpp	chorus.cpp interpolation.cpp allPassFilter.cpp schroedersReverb.cpp
 # the directory to the folder with the shared modules
 CODELIBRARY_PATH = ../../codeLibrary/
 # the modules to include
