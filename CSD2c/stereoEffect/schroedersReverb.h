@@ -2,6 +2,7 @@
 #include "delay.h"
 #include "effect.h"
 
+//TODO find a good delay time + feedback coeficient
 class SchroedersReverb : public Effect {
 public:
   SchroedersReverb();
@@ -18,7 +19,4 @@ private:
   float samplerate;
   float combFilterSignal;
   float apfSignal;
-
-
-  int check;
 };

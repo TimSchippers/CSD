@@ -5,12 +5,12 @@
 
 SchroedersReverb::SchroedersReverb() {
   for (int apf = 0; apf < 2; apf++) {
-    apfs[apf] = new AllPassFilter(3, 0.1);
+    apfs[apf] = new AllPassFilter(1, 0.5);
   }
   for (int comb = 0; comb < 4; comb++) {
-    combFilters[comb] = new Delay(30 + (3 * comb));
+    combFilters[comb] = new Delay(30 + (45.0f / (comb+1)));
   }
-  setReverbTime(333);
+  setReverbTime(900);
 }
 
 SchroedersReverb::~SchroedersReverb() {
@@ -24,25 +24,23 @@ SchroedersReverb::~SchroedersReverb() {
 
 void SchroedersReverb::applyEffect(const float &input, float &output,
                                    int channel) {
-
-  float combFilterSample[4];
+  float combfilterOutput[4];
   for (int comb = 0; comb < 4; comb++) {
-    combFilters[comb]->processSignal(input, combFilterSample[comb], channel);
-    combFilterSignal += combFilterSample[comb] / 4 ;
+    combFilters[comb]->applyEffect(input, combfilterOutput[comb], channel);
   }
+  combFilterSignal = (combfilterOutput[0] + combfilterOutput[1] +
+                      combfilterOutput[2] + combfilterOutput[3]) /
+                     4;
   apfs[0]->applyFilter(combFilterSignal, apfSignal, channel);
   apfs[1]->applyFilter(apfSignal, output, channel);
-  //std::cout << "check" << check << std::endl;
-  check++;
-
-  memset(combFilterSample, 0, 4 * sizeof(int));
+  // memset(combFilterSample, 0, 4 * sizeof(int));
 }
 
 // sets de feedback values so that every filter has the same decay time
 void SchroedersReverb::setReverbTime(float milliseconds) {
   for (int filter = 0; filter < 4; filter++) {
     float delayTime = combFilters[filter]->getDelayTime();
-    float feedback = pow(10, (-3 * delayTime ) / milliseconds);
+    float feedback = pow(10, (-3 * delayTime) / milliseconds);
     std::cout << feedback << std::endl;
     combFilters[filter]->setFeedbackAmount(feedback);
   }
