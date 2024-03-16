@@ -4,13 +4,19 @@
 #include <ostream>
 
 SchroedersReverb::SchroedersReverb() {
-  for (int apf = 0; apf < 2; apf++) {
-    apfs[apf] = new AllPassFilter(1, 0.5);
-  }
-  for (int comb = 0; comb < 4; comb++) {
-    combFilters[comb] = new Delay(30 + (45.0f / (comb+1)));
-  }
-  setReverbTime(900);
+  // for (int apf = 0; apf < 2; apf++) {
+  //   apfs[apf] = new AllPassFilter(1, 0.5);
+  // }
+  // for (int comb = 0; comb < 4; comb++) {
+  //  combFilters[comb] = new Delay(30 + (45.0f / (comb+1)));
+  //}
+  combFilters[0] = new Delay(36.7);
+  combFilters[1] = new Delay(48.6);
+  combFilters[2] = new Delay(44.0);
+  combFilters[3] = new Delay(40.6);
+  apfs[0] = new AllPassFilter(6.12, 0.7);
+  apfs[1] = new AllPassFilter(2.12, 0.7);
+  setReverbTime(4200);
 }
 
 SchroedersReverb::~SchroedersReverb() {
