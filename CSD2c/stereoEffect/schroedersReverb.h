@@ -2,7 +2,8 @@
 #include "delay.h"
 #include "effect.h"
 
-//TODO find a good delay time + feedback coeficient
+// based on the example on schroeder reverb in 
+// the book "Designing audio effect plugins by Will C. Pirkle
 class SchroedersReverb : public Effect {
 public:
   SchroedersReverb();

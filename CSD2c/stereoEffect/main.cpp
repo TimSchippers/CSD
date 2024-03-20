@@ -1,9 +1,9 @@
 #include "audioToFile.h"
 #include "callback.h"
 #include "jack_module.h"
+#include "queue.h"
 #include <iostream>
 #include <thread>
-#include "queue.h"
 
 /*
  * NOTE: jack2 needs to be installed
@@ -13,13 +13,14 @@
  * jackd -d coreaudio
  */
 
-#define WRITE_TO_FILE 1
+#define WRITE_TO_FILE 0
 
 int main(int argc, char **argv) {
   auto callback = CustomCallback{};
   auto jackModule = JackModule{callback};
+  Queue queue = Queue(callback);
 #if WRITE_TO_FILE
-  Queue queue; 
+  Queue queue;
   queue.addToQueue(Queue::mdf);
   queue.addToQueue(Queue::ldf);
   queue.addToQueue(Queue::mdf);
@@ -30,8 +31,8 @@ int main(int argc, char **argv) {
   queue.processQueue();
   queue.processQueue();
   queue.processQueue();
-  //AudioToFile audioToFile;
-  //audioToFile.write(callback);
+  // AudioToFile audioToFile;
+  // audioToFile.write(callback);
 #else
   jackModule.init(1, 2);
 
@@ -40,6 +41,10 @@ int main(int argc, char **argv) {
     switch (std::cin.get()) {
     case 'q':
       running = false;
+    case 'd':
+      std::cout << "more delay" << std::endl;
+      queue.addToQueue(Queue::mdt);
+      queue.processQueue();
     }
   }
 #endif

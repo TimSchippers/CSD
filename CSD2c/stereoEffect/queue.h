@@ -1,7 +1,9 @@
 #include <queue>
+#include "callback.h"
 
 class Queue {
 public:
+  Queue(CustomCallback& callback);
   enum ParameterChanges {
     mdt, // more delay time
     ldt, // less delay tim
@@ -13,5 +15,6 @@ public:
   void processQueue();
 
 private:
+  CustomCallback callback;
   std::queue<ParameterChanges> thisQueue;
 };

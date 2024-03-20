@@ -1,14 +1,18 @@
 #include "queue.h"
+#include "callback.h"
 #include <iostream>
 #include <ostream>
 
+Queue::Queue(CustomCallback &callback) : callback(callback) {}
 void Queue::addToQueue(ParameterChanges parameterChanges) {
   thisQueue.push(parameterChanges);
 };
+
 void Queue::processQueue() {
   switch (thisQueue.front()) {
   case ParameterChanges::mdt: {
     std::cout << "more delay time" << std::endl;
+    callback.setDelayTime(1000);
     thisQueue.pop();
     break;
   }

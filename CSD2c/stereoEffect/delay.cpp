@@ -5,8 +5,9 @@
 Delay::Delay(float milliseconds) {
   // TODO clock = main clock
   prepare(44100);
-  setMaxDelayTime(400);
-  setDelayTime(milliseconds, 0);
+  setDryWet(0.5);
+  setMaxDelayTime(4000);
+  setDelayTime(milliseconds, 0.33);
   setFeedbackAmount(0.4f);
 };
 Delay::~Delay() {
