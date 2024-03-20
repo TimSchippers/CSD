@@ -16,6 +16,19 @@ void CustomCallback::setDelayTime(float milliseconds) {
   delay.setDelayTime(milliseconds, 0);
 }
 
+float CustomCallback::getDelayTime() {
+  float delayTime = delay.getDelayTime();
+  return delayTime;
+}
+void CustomCallback::setDelayFeedback(float feedback) {
+  delay.setFeedbackAmount(feedback);
+}
+
+float CustomCallback::getDelayFeedback() {
+  float feedbackAmount = delay.getFeedbackAmount();
+  return feedbackAmount;
+}
+
 void CustomCallback::process(AudioBuffer buffer) {
   auto [inputChannels, outputChannels, numInputChannels, numOutputChannels,
         numFrames] = buffer;

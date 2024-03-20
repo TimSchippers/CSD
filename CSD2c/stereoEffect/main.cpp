@@ -41,10 +41,6 @@ int main(int argc, char **argv) {
     switch (std::cin.get()) {
     case 'q':
       running = false;
-    case 'd':
-      std::cout << "more delay" << std::endl;
-      queue.addToQueue(Queue::mdt);
-      queue.processQueue();
     }
   }
 #endif

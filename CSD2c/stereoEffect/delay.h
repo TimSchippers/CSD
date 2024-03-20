@@ -16,6 +16,7 @@ public:
   void setMaxDelayTime(float milliseconds);
   void setFeedbackAmount(float feedback);
   float getDelayTime();
+  float getFeedbackAmount();
 
 private:
   // TODO change to vector to have an modular amount of buffers
