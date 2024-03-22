@@ -2,11 +2,12 @@
 #include "callback.h"
 #include <iostream>
 #include <ostream>
+#include <string>
 
 Queue::Queue(CustomCallback &callback) : callback(callback) {}
 void Queue::addToQueue(ParameterChanges parameterChanges) {
   thisQueue.push(parameterChanges);
-};
+}
 
 void Queue::processQueue() {
   if (thisQueue.empty()) {

@@ -1,4 +1,6 @@
 #include "callback.h"
+#include <iostream>
+#include <ostream>
 
 #define SAW_INPUT 0
 
@@ -40,9 +42,16 @@ void CustomCallback::process(AudioBuffer buffer) {
       reverb.processSignal(signal[channel], outputChannels[channel][sample],
                            channel);
 #else
-      delay.processSignal(inputChannels[0][sample], outputChannels[channel][sample], channel);
-      //reverb.processSignal(signal[channel], outputChannels[channel][sample],
-       //                    channel);
+      delay.processSignal(inputChannels[0][sample],
+                          outputChannels[channel][sample], channel);
+      // reverb.processSignal(signal[channel], outputChannels[channel][sample],
+      //                     channel);
+      samples++;
+      if (samples == 88200) {
+        seconds++;
+        samples -= 88200;
+        std::cout << seconds << std::endl;
+      }
 #endif
     }
   }

@@ -1,4 +1,7 @@
+#pragma once
+
 #include <queue>
+#include <string>
 #include "callback.h"
 
 class Queue {
@@ -9,7 +12,6 @@ public:
     ldt, // less delay tim
     mdf, // more delay feedback
     ldf, // less delay feedback
-    SIZE,
   };
 
   void addToQueue(ParameterChanges parameterChanges);
@@ -18,5 +20,4 @@ public:
 private:
   CustomCallback callback;
   std::queue<ParameterChanges> thisQueue;
-  int size;
 };

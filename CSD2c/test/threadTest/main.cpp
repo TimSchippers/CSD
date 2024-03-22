@@ -20,22 +20,10 @@ int main(int argc, char **argv) {
   auto jackModule = JackModule{callback};
   auto ui = UI(callback);
 #if WRITE_TO_FILE
-  Queue queue;
-  queue.addToQueue(Queue::mdf);
-  queue.addToQueue(Queue::ldf);
-  queue.addToQueue(Queue::mdf);
-  queue.addToQueue(Queue::mdf);
-  queue.addToQueue(Queue::ldf);
-  queue.processQueue();
-  queue.processQueue();
-  queue.processQueue();
-  queue.processQueue();
-  queue.processQueue();
-  // AudioToFile audioToFile;
-  // audioToFile.write(callback);
+  AudioToFile audioToFile;
+  audioToFile.write(callback);
 #else
   jackModule.init(1, 2);
-
   ui.addToQueue();
 #endif
   // end the program

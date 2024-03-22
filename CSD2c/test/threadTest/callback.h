@@ -17,6 +17,8 @@ public:
   float getDelayFeedback();
 
 private:
+  long samples = 0;
+  int seconds = 0;
   Delay delay = Delay(300);
 };
 

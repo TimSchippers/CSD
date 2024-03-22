@@ -56,6 +56,6 @@ void UI::addToQueue() {
     } else if (parameterChange == 4) {
       running = false;
     }
-    queue.processQueue();
+    //queue.processQueue();
   }
 }

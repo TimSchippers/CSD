@@ -18,7 +18,7 @@ public:
   UI(CustomCallback& callback);
   int retrieveUserSelection(std::string selectionOptions[], int numOptions);
   void addToQueue();
-  Queue queue;
 private:
+  Queue queue;
   std::string retrieveUserInput(std::string selectionOptions[], int numOptions);
 };
