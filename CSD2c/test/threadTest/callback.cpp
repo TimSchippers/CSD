@@ -40,9 +40,9 @@ void CustomCallback::process(AudioBuffer buffer) {
       reverb.processSignal(signal[channel], outputChannels[channel][sample],
                            channel);
 #else
-     // delay.processSignal(inputChannels[0][sample], outputChannels[channel][sample], channel);
-      reverb.processSignal(inputChannels[0][sample], outputChannels[channel][sample],
-                           channel);
+      delay.processSignal(inputChannels[0][sample], outputChannels[channel][sample], channel);
+      //reverb.processSignal(signal[channel], outputChannels[channel][sample],
+       //                    channel);
 #endif
     }
   }
