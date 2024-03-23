@@ -1,6 +1,4 @@
 #include "callback.h"
-#include <iostream>
-#include <ostream>
 
 #define SAW_INPUT 0
 
@@ -31,6 +29,10 @@ float CustomCallback::getDelayFeedback() {
   return feedbackAmount;
 }
 
+void CustomCallback::addToQueue(Queue::ParameterChanges input){
+  queue.addToQueue(input);
+};
+
 void CustomCallback::process(AudioBuffer buffer) {
   auto [inputChannels, outputChannels, numInputChannels, numOutputChannels,
         numFrames] = buffer;
@@ -50,7 +52,10 @@ void CustomCallback::process(AudioBuffer buffer) {
       if (samples == 88200) {
         seconds++;
         samples -= 88200;
-        std::cout << seconds << std::endl;
+      }
+      if (seconds == 8) {
+        std::cout << "process" << std::endl;
+        seconds -= 8;
       }
 #endif
     }

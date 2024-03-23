@@ -44,15 +44,16 @@ void UI::addToQueue() {
     int parameterChange =
         retrieveUserSelection(parameterChangeOptions, numOptions);
     if (parameterChange == 0) {
-      callback.addToQueue(Queue::mdt);
+      callback.addToQueue(CustomCallback::mdt);
     } else if (parameterChange == 1) {
-      callback.addToQueue(Queue::ldt);
+      callback.addToQueue(CustomCallback::ldt);
     } else if (parameterChange == 2) {
-      callback.addToQueue(Queue::mdf);
+      callback.addToQueue(CustomCallback::mdf);
     } else if (parameterChange == 3) {
-      callback.addToQueue(Queue::ldf);
+      callback.addToQueue(CustomCallback::ldf);
     } else if (parameterChange == 4) {
       running = false;
     }
+    //callback.processQueue();
   }
 }

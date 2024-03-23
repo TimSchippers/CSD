@@ -1,8 +1,4 @@
 #include "queue.h"
-#include "callback.h"
-#include <iostream>
-#include <ostream>
-#include <string>
 
 Queue::Queue(CustomCallback &callback) : callback(callback) {}
 void Queue::addToQueue(ParameterChanges parameterChanges) {

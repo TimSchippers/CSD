@@ -2,9 +2,8 @@
 #define CALLBACK_H
 
 #include <iostream>
-
-#include "delay.h"
 #include "jack_module.h"
+#include "delay.h"
 
 class CustomCallback : public AudioCallback {
 public:
@@ -16,9 +15,11 @@ public:
   void setDelayFeedback(float feedback);
   float getDelayFeedback();
 
+  int getSeconds();
+
 private:
-  long samples = 0;
   int seconds = 0;
+  long samples = 0;
   Delay delay = Delay(300);
 };
 

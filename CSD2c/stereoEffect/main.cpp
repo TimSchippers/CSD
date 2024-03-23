@@ -1,7 +1,7 @@
 #include "audioToFile.h"
 #include "callback.h"
 #include "jack_module.h"
-#include "queue.h"
+#include "ui.h"
 #include <iostream>
 #include <thread>
 
@@ -15,35 +15,34 @@
 
 #define WRITE_TO_FILE 0
 
+
 int main(int argc, char **argv) {
   auto callback = CustomCallback{};
   auto jackModule = JackModule{callback};
-  Queue queue = Queue(callback);
+  auto ui = UI(callback);
 #if WRITE_TO_FILE
-  Queue queue;
-  queue.addToQueue(Queue::mdf);
-  queue.addToQueue(Queue::ldf);
-  queue.addToQueue(Queue::mdf);
-  queue.addToQueue(Queue::mdf);
-  queue.addToQueue(Queue::ldf);
-  queue.processQueue();
-  queue.processQueue();
-  queue.processQueue();
-  queue.processQueue();
-  queue.processQueue();
+  callback.addToQueue(CustomCallback::ParameterChanges::mdt);
+  callback.addToQueue(CustomCallback::ParameterChanges::ldt);
+  callback.addToQueue(CustomCallback::ParameterChanges::mdt);
+  callback.addToQueue(CustomCallback::ParameterChanges::mdt);
+  callback.addToQueue(CustomCallback::ParameterChanges::ldt);
+  callback.processQueue();
+  callback.processQueue();
+  callback.processQueue();
+  callback.processQueue();
+  callback.processQueue();
   // AudioToFile audioToFile;
   // audioToFile.write(callback);
-#else
-  jackModule.init(1, 2);
-
-  bool running = true;
-  while (running) {
-    switch (std::cin.get()) {
-    case 'q':
-      running = false;
-    }
-  }
 #endif
+   jackModule.init(1, 2);
+   ui.addToQueue();
+
+  //std::thread thread1(&JackModule::init, &jackModule, 1, 2);
+  //std::thread thread2(&UI::addToQueue, &ui);
+
+  //thread1.join();
+  //thread2.join();
+
   // end the program
   return 0;
 } // main()

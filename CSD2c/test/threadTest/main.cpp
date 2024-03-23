@@ -1,6 +1,5 @@
 #include "audioToFile.h"
 #include "callback.h"
-#include "jack_module.h"
 #include "ui.h"
 #include <iostream>
 #include <thread>
