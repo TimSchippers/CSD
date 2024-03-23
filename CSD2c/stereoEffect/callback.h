@@ -1,7 +1,6 @@
 #ifndef CALLBACK_H
 #define CALLBACK_H
 
-#include <atomic>
 #include <iostream>
 
 #include "delay.h"
@@ -30,11 +29,11 @@ public:
   void processQueue();
 
 private:
-  long samples = 0;
-  long seconds = 0;
+  int samples = 0;
+  int seconds = 0;
   Delay delay = Delay(300);
-//  SchroedersReverb reverb = SchroedersReverb();
-//  Saw saws[2];
+  //  SchroedersReverb reverb = SchroedersReverb();
+  //  Saw saws[2];
 
   std::queue<ParameterChanges> thisQueue;
 };

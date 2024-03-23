@@ -1,5 +1,4 @@
 #include "callback.h"
-#include <atomic>
 #include <iostream>
 #include <ostream>
 
@@ -16,13 +15,13 @@ void CustomCallback::prepare(int sampleRate) {
 }
 
 void CustomCallback::addToQueue(ParameterChanges parameterChanges) {
-  thisQueue.push(parameterChanges);
-  std::cout << thisQueue.front() << std::endl;
+  thisQueue.emplace(parameterChanges);
+  // std::cout << thisQueue.size() << std::endl;
+  std::cout << seconds << std::endl;
 }
 
 void CustomCallback::processQueue() {
   if (thisQueue.empty()) {
-    std::cout << "empty" << std::endl;
   } else {
     switch (thisQueue.front()) {
     case ParameterChanges::mdt: {
@@ -77,9 +76,10 @@ void CustomCallback::process(AudioBuffer buffer) {
       // outputChannels[channel][sample],
       //                    channel);
       samples++;
-      if (samples == 88200) {
+      if (samples >= 88200) {
         seconds++;
-       // std::cout << seconds << std::endl;
+        //std::cout << seconds << std::endl;
+        // std::cout << thisQueue.size() << std::endl;
         processQueue();
         samples -= 88200;
       }

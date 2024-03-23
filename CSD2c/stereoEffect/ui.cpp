@@ -1,4 +1,6 @@
 #include "ui.h"
+#include <iostream>
+#include <ostream>
 
 UI::UI(CustomCallback& callback) :callback(callback){}
 
