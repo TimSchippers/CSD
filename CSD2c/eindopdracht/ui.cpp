@@ -1,18 +1,9 @@
 #include "ui.h"
-#include <iostream>
-#include <ostream>
 
-UI::UI(CustomCallback& callback) :callback(callback){}
+UI::UI(CustomCallback &callback) : callback(callback) {}
 
 std::string UI::retrieveUserInput(std::string selectionOptions[],
                                   int numOptions) {
-  // show user the allowed options
-  std::cout << "Please enter your selection. You can choose from: ";
-  for (int i = 0; i < numOptions - 1; i++) {
-    std::cout << selectionOptions[i] << ", ";
-  }
-  // print last option outside forloop to end with an .
-  std::cout << selectionOptions[numOptions - 1] << "." << std::endl;
   // retrieve and return choice
   std::string selection = "";
   std::cin >> selection;
@@ -41,12 +32,13 @@ int UI::retrieveUserSelection(std::string selectionOptions[], int numOptions) {
 void UI::addToQueue() {
   bool running = true;
   while (running) {
-    std::string parameterChangeOptions[] = {"mdt", "ldt", "mdf", "ldf", "q"};
-    int numOptions = 5;
+    std::string parameterChangeOptions[] = {"q",   "ldt", "mdf", "ldf",
+                                            "mdt", "d",   "t",   "n"};
+    int numOptions = 7;
     int parameterChange =
         retrieveUserSelection(parameterChangeOptions, numOptions);
     if (parameterChange == 0) {
-      callback.addToQueue(CustomCallback::mdt);
+      running = false;
     } else if (parameterChange == 1) {
       callback.addToQueue(CustomCallback::ldt);
     } else if (parameterChange == 2) {
@@ -54,8 +46,13 @@ void UI::addToQueue() {
     } else if (parameterChange == 3) {
       callback.addToQueue(CustomCallback::ldf);
     } else if (parameterChange == 4) {
-      running = false;
+      callback.addToQueue(CustomCallback::mdt);
+    } else if (parameterChange == 5) {
+      callback.addToQueue(CustomCallback::d);
+    } else if (parameterChange == 6) {
+      callback.addToQueue(CustomCallback::t);
+    } else if (parameterChange == 7) {
+      callback.addToQueue(CustomCallback::n);
     }
-    //callback.processQueue();
   }
 }

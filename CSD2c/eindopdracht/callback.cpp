@@ -1,54 +1,64 @@
 #include "callback.h"
 #include <iostream>
-#include <ostream>
 
 #define SAW_INPUT 0
 
 void CustomCallback::prepare(int sampleRate) {
   std::cout << "\nsamplerate: " << sampleRate << "\n";
-#if SAW_INPUT
-  for (int i = 0; i < 2; i++) {
-    saws[i].prepare(sampleRate);
-    saws[i].setFrequency(220);
-  }
-#endif
+  delay.prepare(sampleRate);
 }
 
 void CustomCallback::addToQueue(ParameterChanges parameterChanges) {
   thisQueue.emplace(parameterChanges);
-  // std::cout << thisQueue.size() << std::endl;
-  std::cout << seconds << std::endl;
 }
 
 void CustomCallback::processQueue() {
   if (thisQueue.empty()) {
+    boredValue++;
   } else {
     switch (thisQueue.front()) {
     case ParameterChanges::mdt: {
-      std::cout << "more delay time" << std::endl;
       float newDelayTime = delay.getDelayTime() + 50;
-      delay.setDelayTime(newDelayTime, 0);
+      delay.setDelayTime(newDelayTime, stereoOffset);
       thisQueue.pop();
       break;
     }
     case ParameterChanges::ldt: {
-      std::cout << "less delay time" << std::endl;
       float newDelayTime = delay.getDelayTime() - 50;
-      delay.setDelayTime(newDelayTime, 0);
+      delay.setDelayTime(newDelayTime, stereoOffset);
       thisQueue.pop();
       break;
     }
     case ParameterChanges::mdf: {
-      std::cout << "more feedback" << std::endl;
       float newFeedbackAmount = delay.getFeedbackAmount() + 0.05;
       delay.setFeedbackAmount(newFeedbackAmount);
       thisQueue.pop();
       break;
     }
     case ParameterChanges::ldf: {
-      std::cout << "less feedback" << std::endl;
       float newFeedbackAmount = delay.getFeedbackAmount() - 0.05;
       delay.setFeedbackAmount(newFeedbackAmount);
+      thisQueue.pop();
+      break;
+    }
+    case ParameterChanges::d: {
+      stereoOffset = 0.5;
+      std::cout << "dotted delay" << std::endl;
+      delay.setDelayTime(delay.getDelayTime(), stereoOffset);
+      thisQueue.pop();
+      break;
+    }
+    case ParameterChanges::t: {
+      stereoOffset = 0.33;
+      std::cout << "triplet delay" << std::endl;
+      delay.setDelayTime(delay.getDelayTime(), stereoOffset);
+      thisQueue.pop();
+      break;
+    }
+    case ParameterChanges::n: {
+      stereoOffset = 0;
+      std::cout << "triplet delay" << std::endl;
+      delay.setDelayTime(delay.getDelayTime(), stereoOffset);
       thisQueue.pop();
       break;
     }
@@ -65,11 +75,6 @@ void CustomCallback::process(AudioBuffer buffer) {
   float signal[2];
   for (int channel = 0u; channel < numOutputChannels; ++channel) {
     for (int sample = 0u; sample < numFrames; ++sample) {
-#if SAW_INPUT
-      signal[channel] = 0.2 * saws[channel].genNextSample();
-      reverb.processSignal(signal[channel], outputChannels[channel][sample],
-                           channel);
-#else
       delay.processSignal(inputChannels[0][sample],
                           outputChannels[channel][sample], channel);
       // reverb.processSignal(inputChannels[0][sample],
@@ -78,12 +83,12 @@ void CustomCallback::process(AudioBuffer buffer) {
       samples++;
       if (samples >= 88200) {
         seconds++;
-        //std::cout << seconds << std::endl;
-        // std::cout << thisQueue.size() << std::endl;
-        processQueue();
+        if (seconds == 3) {
+          processQueue();
+          seconds -= 3;
+        }
         samples -= 88200;
       }
-#endif
     }
   }
 }

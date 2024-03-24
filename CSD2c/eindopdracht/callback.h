@@ -1,5 +1,4 @@
-#ifndef CALLBACK_H
-#define CALLBACK_H
+#pragma once
 
 #include <iostream>
 
@@ -8,7 +7,6 @@
 #include "schroedersReverb.h"
 #include "tremolo.h"
 #include <queue>
-#include <saw.h>
 
 class CustomCallback : public AudioCallback {
 public:
@@ -24,18 +22,20 @@ public:
     ldt, // less delay tim
     mdf, // more delay feedback
     ldf, // less delay feedback
+    d,   // set right delay to dotted
+    t,   // set right delay to triplet
+    n,
   };
   void addToQueue(ParameterChanges parameterChanges);
   void processQueue();
 
 private:
+  int boredValue = 0;
   int samples = 0;
   int seconds = 0;
+  float stereoOffset = 0;
   Delay delay = Delay(300);
   //  SchroedersReverb reverb = SchroedersReverb();
-  //  Saw saws[2];
 
   std::queue<ParameterChanges> thisQueue;
 };
-
-#endif // CALLBACK_H
