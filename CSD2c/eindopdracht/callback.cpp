@@ -61,13 +61,6 @@ void CustomCallback::processQueue() {
       thisQueue.pop();
       break;
     }
-    case ParameterChanges::f: {
-      // TODO implement freeze in reverb and turn delay off
-      std::cout << "freeze" << std::endl;
-      reverb.freeze();
-      thisQueue.pop();
-      break;
-    }
     default:
       throw "invalid input";
       break;
@@ -88,11 +81,14 @@ void CustomCallback::process(AudioBuffer buffer) {
       outputChannels[channel][sample] = signal[channel];
       samples++;
       if (thisQueue.size() >= 5) {
-        std::cout << "freeze" << std::endl;
+        if (freezed == false) {
+          reverb.freeze();
+          freezed = true;
+        }
       }
       if (samples >= 88200) {
         seconds++;
-        if (seconds == 3) {
+        if (seconds == 3 && freezed == false) {
           processQueue();
           seconds -= 3;
         }

@@ -35,6 +35,7 @@ private:
   int samples = 0;
   int seconds = 0;
   float stereoOffset = 0;
+  bool freezed = false;
   Delay delay = Delay(300);
   SchroedersReverb reverb = SchroedersReverb();
 
