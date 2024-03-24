@@ -1,7 +1,6 @@
 #include "callback.h"
 #include <iostream>
-
-#define SAW_INPUT 0
+#include <ostream>
 
 void CustomCallback::prepare(int sampleRate) {
   std::cout << "\nsamplerate: " << sampleRate << "\n";
@@ -57,8 +56,15 @@ void CustomCallback::processQueue() {
     }
     case ParameterChanges::n: {
       stereoOffset = 0;
-      std::cout << "triplet delay" << std::endl;
+      std::cout << "normal delay" << std::endl;
       delay.setDelayTime(delay.getDelayTime(), stereoOffset);
+      thisQueue.pop();
+      break;
+    }
+    case ParameterChanges::f: {
+      // TODO implement freeze in reverb and turn delay off
+      std::cout << "freeze" << std::endl;
+      reverb.freeze();
       thisQueue.pop();
       break;
     }
@@ -75,12 +81,15 @@ void CustomCallback::process(AudioBuffer buffer) {
   float signal[2];
   for (int channel = 0u; channel < numOutputChannels; ++channel) {
     for (int sample = 0u; sample < numFrames; ++sample) {
-      delay.processSignal(inputChannels[0][sample],
-                          outputChannels[channel][sample], channel);
-      // reverb.processSignal(inputChannels[0][sample],
-      // outputChannels[channel][sample],
-      //                    channel);
+      signal[channel] = inputChannels[0][sample];
+      // delay.processSignal(inputChannels[0][sample],
+      //                     outputChannels[channel][sample], channel);
+      reverb.processSignal(signal[channel], signal[channel], channel);
+      outputChannels[channel][sample] = signal[channel];
       samples++;
+      if (thisQueue.size() >= 5) {
+        std::cout << "freeze" << std::endl;
+      }
       if (samples >= 88200) {
         seconds++;
         if (seconds == 3) {

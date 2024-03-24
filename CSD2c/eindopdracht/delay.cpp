@@ -22,8 +22,8 @@ void Delay::prepare(int sampleRate) {
   for (int channel = 0; channel < 2; channel++) {
     buffer[channel] = new CircularBuffer;
   }
-  setMaxDelayTime(numMaxDelaySamples);
-  setDelayTime(getDelayTime(), 0 );
+  setMaxDelayTime(numMaxDelaySamples / sampleRate * 1000);
+  setDelayTime(getDelayTime(), 0);
 }
 
 void Delay::applyEffect(const float &input, float &output, int channel) {
@@ -56,4 +56,3 @@ void Delay::setFeedbackAmount(float feedback) { feedbackAmount = feedback; };
 float Delay::getDelayTime() { return numDelaySamples / sampleRate * 1000; };
 
 float Delay::getFeedbackAmount() { return feedbackAmount; };
-

@@ -32,9 +32,9 @@ int UI::retrieveUserSelection(std::string selectionOptions[], int numOptions) {
 void UI::addToQueue() {
   bool running = true;
   while (running) {
-    std::string parameterChangeOptions[] = {"q",   "ldt", "mdf", "ldf",
-                                            "mdt", "d",   "t",   "n"};
-    int numOptions = 7;
+    std::string parameterChangeOptions[] = {"q", "ldt", "mdf", "ldf", "mdt",
+                                            "d", "t",   "n",   "f"};
+    int numOptions = 9;
     int parameterChange =
         retrieveUserSelection(parameterChangeOptions, numOptions);
     if (parameterChange == 0) {
@@ -53,6 +53,8 @@ void UI::addToQueue() {
       callback.addToQueue(CustomCallback::t);
     } else if (parameterChange == 7) {
       callback.addToQueue(CustomCallback::n);
+    } else if (parameterChange == 8) {
+      callback.addToQueue(CustomCallback::f);
     }
   }
 }

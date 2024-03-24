@@ -24,7 +24,8 @@ public:
     ldf, // less delay feedback
     d,   // set right delay to dotted
     t,   // set right delay to triplet
-    n,
+    n,   // set both delays to same delaytime
+    f,   // set freeze
   };
   void addToQueue(ParameterChanges parameterChanges);
   void processQueue();
@@ -35,7 +36,7 @@ private:
   int seconds = 0;
   float stereoOffset = 0;
   Delay delay = Delay(300);
-  //  SchroedersReverb reverb = SchroedersReverb();
+  SchroedersReverb reverb = SchroedersReverb();
 
   std::queue<ParameterChanges> thisQueue;
 };

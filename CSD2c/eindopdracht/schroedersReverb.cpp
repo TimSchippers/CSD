@@ -32,7 +32,7 @@ void SchroedersReverb::applyEffect(const float &input, float &output,
                                    int channel) {
   float combfilterOutput[4];
   for (int comb = 0; comb < 4; comb++) {
-    combFilters[comb]->applyEffect(input, combfilterOutput[comb], channel);
+    combFilters[comb]->applyEffect(input * inputGain, combfilterOutput[comb], channel);
   }
   combFilterSignal = (combfilterOutput[0] + combfilterOutput[1] +
                       combfilterOutput[2] + combfilterOutput[3]) /
@@ -50,4 +50,9 @@ void SchroedersReverb::setReverbTime(float milliseconds) {
     std::cout << feedback << std::endl;
     combFilters[filter]->setFeedbackAmount(feedback);
   }
+}
+
+void SchroedersReverb::freeze(){
+  inputGain = 0;
+  setReverbTime(10000000);
 }

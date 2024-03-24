@@ -1,4 +1,5 @@
 #include "circularBuffer.h"
+#include "effect.h"
 
 // an all pass filter based on the formula found in 
 // the book "Designing audio effect plugins by Will C. Pirkle

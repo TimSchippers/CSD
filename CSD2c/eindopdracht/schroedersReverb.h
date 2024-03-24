@@ -12,10 +12,13 @@ public:
   void applyEffect(const float &input, float &output, int channel) override;
   void setReverbTime(float milliseconds);
 
+  void freeze();
+
 private:
   AllPassFilter* apfs[2];
   Delay* combFilters[4];
 
+  float inputGain=1;
   float reverbTime;
   float samplerate;
   float combFilterSignal;
