@@ -33,8 +33,8 @@ void UI::addToQueue() {
   bool running = true;
   while (running) {
     std::string parameterChangeOptions[] = {"q", "ldt", "mdf", "ldf", "mdt",
-                                            "d", "t",   "n",   "f"};
-    int numOptions = 9;
+                                            "d", "t",   "n",   "mrt", "lrt"};
+    int numOptions = 10;
     int parameterChange =
         retrieveUserSelection(parameterChangeOptions, numOptions);
     if (parameterChange == 0) {
@@ -54,7 +54,9 @@ void UI::addToQueue() {
     } else if (parameterChange == 7) {
       callback.addToQueue(CustomCallback::n);
     } else if (parameterChange == 8) {
-      callback.addToQueue(CustomCallback::f);
+      callback.addToQueue(CustomCallback::mrt);
+    } else if (parameterChange == 9) {
+      callback.addToQueue(CustomCallback::lrt);
     }
   }
 }

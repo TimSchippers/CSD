@@ -21,27 +21,11 @@ int main(int argc, char **argv) {
   auto jackModule = JackModule{callback};
   auto ui = UI(callback);
 #if WRITE_TO_FILE
-  callback.addToQueue(CustomCallback::ParameterChanges::mdt);
-  callback.addToQueue(CustomCallback::ParameterChanges::ldt);
-  callback.addToQueue(CustomCallback::ParameterChanges::mdt);
-  callback.addToQueue(CustomCallback::ParameterChanges::mdt);
-  callback.addToQueue(CustomCallback::ParameterChanges::ldt);
-  callback.processQueue();
-  callback.processQueue();
-  callback.processQueue();
-  callback.processQueue();
-  callback.processQueue();
-  // AudioToFile audioToFile;
-  // audioToFile.write(callback);
+  AudioToFile audioToFile;
+  audioToFile.write(callback);
 #endif
    jackModule.init(1, 2);
    ui.addToQueue();
-
-  //std::thread thread1(&JackModule::init, &jackModule, 1, 2);
-  //std::thread thread2(&UI::addToQueue, &ui);
-
-  //thread1.join();
-  //thread2.join();
 
   // end the program
   return 0;

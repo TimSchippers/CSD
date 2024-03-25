@@ -1,12 +1,15 @@
 #pragma once
 
 #include <iostream>
+#include <queue>
 
-#include "delay.h"
 #include "jack_module.h"
+
+#include "chorus.h"
+#include "delay.h"
+#include "bitcrusher.h"
 #include "schroedersReverb.h"
 #include "tremolo.h"
-#include <queue>
 
 class CustomCallback : public AudioCallback {
 public:
@@ -25,7 +28,8 @@ public:
     d,   // set right delay to dotted
     t,   // set right delay to triplet
     n,   // set both delays to same delaytime
-    f,   // set freeze
+    mrt, // set more reverbtime
+    lrt, // set less reverb time
   };
   void addToQueue(ParameterChanges parameterChanges);
   void processQueue();
@@ -36,8 +40,11 @@ private:
   int seconds = 0;
   float stereoOffset = 0;
   bool freezed = false;
+
+  Tremolo tremolo = Tremolo();
   Delay delay = Delay(300);
   SchroedersReverb reverb = SchroedersReverb();
+
 
   std::queue<ParameterChanges> thisQueue;
 };

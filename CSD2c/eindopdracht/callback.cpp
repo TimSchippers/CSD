@@ -5,6 +5,7 @@
 void CustomCallback::prepare(int sampleRate) {
   std::cout << "\nsamplerate: " << sampleRate << "\n";
   delay.prepare(sampleRate);
+  reverb.setDryWet(0.3);
 }
 
 void CustomCallback::addToQueue(ParameterChanges parameterChanges) {
@@ -61,6 +62,18 @@ void CustomCallback::processQueue() {
       thisQueue.pop();
       break;
     }
+    case ParameterChanges::mrt: {
+      float newReverbTime = reverb.getReverbTime() + 100;
+      reverb.setReverbTime(newReverbTime);
+      thisQueue.pop();
+      break;
+    }
+    case ParameterChanges::lrt: {
+      float newReverbTime = reverb.getReverbTime() - 100;
+      reverb.setReverbTime(newReverbTime);
+      thisQueue.pop();
+      break;
+    }
     default:
       throw "invalid input";
       break;
@@ -74,9 +87,7 @@ void CustomCallback::process(AudioBuffer buffer) {
   float signal[2];
   for (int channel = 0u; channel < numOutputChannels; ++channel) {
     for (int sample = 0u; sample < numFrames; ++sample) {
-      signal[channel] = inputChannels[0][sample];
-      // delay.processSignal(inputChannels[0][sample],
-      //                     outputChannels[channel][sample], channel);
+      delay.processSignal(inputChannels[0][sample], signal[channel], channel);
       reverb.processSignal(signal[channel], signal[channel], channel);
       outputChannels[channel][sample] = signal[channel];
       samples++;

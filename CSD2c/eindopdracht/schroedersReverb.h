@@ -12,6 +12,7 @@ public:
   void applyEffect(const float &input, float &output, int channel) override;
   void setReverbTime(float milliseconds);
 
+  float getReverbTime();
   void freeze();
 
 private:

@@ -1,10 +1,9 @@
 #include "chorus.h"
-#include <iostream>
-#include <ostream>
 
 Chorus::Chorus(float milliseconds) : delayTime(milliseconds) {
   // TODO clock = main clock
   prepare(44100);
+  setDryWet(0.19);
   setMaxDelayTime(30);
   setDelayTime(delayTime);
 };
@@ -16,11 +15,10 @@ Chorus::~Chorus() {
 
 void Chorus::prepare(int sampleRate) {
   this->sampleRate = sampleRate;
-  std::cout << "preparing delay" << std::endl;
   for (int channel = 0; channel < 2; channel++) {
     buffer[channel] = new CircularBuffer;
     lfos[channel].prepare(sampleRate);
-    lfos[channel].setFrequency(0.5);
+    lfos[channel].setFrequency(1);
   }
 }
 
@@ -42,8 +40,6 @@ void Chorus::setDelayTime(float milliseconds) {
 };
 
 void Chorus::setMaxDelayTime(float milliseconds) {
-  std::cout << "setting max delay time in " << milliseconds << " milliseconds"
-            << std::endl;
   numMaxDelaySamples = sampleRate * (milliseconds / 1000);
   for (int channel = 0; channel < 2; channel++) {
     buffer[channel]->setSize(numMaxDelaySamples);

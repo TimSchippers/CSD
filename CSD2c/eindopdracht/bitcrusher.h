@@ -1,24 +1,16 @@
 #pragma once
-#include <math.h>
 #include "effect.h"
+#include <math.h>
 
 // bitcrusher made by Jari Deelstra
 // bitcrusher calculations from pirkle
 
 class Bitcrusher : public Effect {
 public:
-    Bitcrusher() {
-    }
+  void setBitDepth(float bitDepth);
 
-    ~Bitcrusher(){}
-
-    void prepare(int samplerate) override {
-    }
-
-    void setBitDepth(float bitDepth) ;
-
-    void applyEffect(const float &input, float &output, int channel) override ;
+  void applyEffect(const float &input, float &output, int channel) override;
 
 private:
-    float bitDepth;
+  float bitDepth;
 };
