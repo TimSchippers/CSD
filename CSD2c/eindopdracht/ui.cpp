@@ -32,7 +32,7 @@ int UI::retrieveUserSelection(std::string selectionOptions[], int numOptions) {
 void UI::addToQueue() {
   bool running = true;
   while (running) {
-    std::string parameterChangeOptions[] = {"q", "ldt", "mdf", "ldf", "mdt",
+    std::string parameterChangeOptions[] = {"rest", "ldt", "mdf", "ldf", "mdt",
                                             "d", "t",   "n",   "mrt", "lrt"};
     int numOptions = 10;
     int parameterChange =

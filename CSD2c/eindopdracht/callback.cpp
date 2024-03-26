@@ -91,7 +91,7 @@ void CustomCallback::process(AudioBuffer buffer) {
       reverb.processSignal(signal[channel], signal[channel], channel);
       outputChannels[channel][sample] = signal[channel];
       samples++;
-      if (thisQueue.size() >= 5) {
+      if (thisQueue.size() >= 8) {
         if (freezed == false) {
           reverb.freeze();
           freezed = true;
