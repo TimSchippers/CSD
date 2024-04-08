@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+04eba0b86b8248286f49ab304039f418 MyPlugin/AudioPluginExample_artefacts/JuceLibraryCode/AudioPluginExample_AU/PkgInfo
+9de5c04c0af1be3bcfcb5b53e01bcb38 MyPlugin/AudioPluginExample_artefacts/JuceLibraryCode/AudioPluginExample_Standalone/PkgInfo
+fa45580f0ba6f8e325c2ea2848f0d65d MyPlugin/AudioPluginExample_artefacts/JuceLibraryCode/AudioPluginExample_VST3/PkgInfo
