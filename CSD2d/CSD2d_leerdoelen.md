@@ -30,3 +30,9 @@
 - Minimaal 2 goed gedocumenteerde one day projects met video's van playtests
 - Minimaal 3 keer geplaytest in de les
 - Reflectie op elk Project en volgende stappen gepresenteerd
+
+## Criteria voor de leerdoelen
+0. Ik heb een lijst van ideeën voor de zomervakantie
+1. een goed overzicht kunnen presenteren van de tijd die ik er aan heb gezeten samen met time tracking en documentatie over wat ik wanneer heb gedaan
+2. naar mijn idee heb ik dit leerdoel gehaald als ik minimaal 2 projecten in mijn portfolio heb kunnen zetten
+3. als ik in mijn reflectie kan zetten dat ik meer dan het mvp/geschatte doel heb kunnen doen -> meer gedaan dan dat ik dacht
