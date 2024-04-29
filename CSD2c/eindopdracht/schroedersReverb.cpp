@@ -10,7 +10,7 @@ SchroedersReverb::SchroedersReverb() {
   combFilters[3] = new Delay(40.6);
   apfs[0] = new AllPassFilter(6.12, 0.7);
   apfs[1] = new AllPassFilter(2.12, 0.7);
-  setReverbTime(2100);
+  setReverbTime(8100);
 }
 
 SchroedersReverb::~SchroedersReverb() {

@@ -87,8 +87,9 @@ void CustomCallback::process(AudioBuffer buffer) {
   float signal[2];
   for (int channel = 0u; channel < numOutputChannels; ++channel) {
     for (int sample = 0u; sample < numFrames; ++sample) {
-      delay.processSignal(inputChannels[0][sample], signal[channel], channel);
-      reverb.processSignal(signal[channel], signal[channel], channel);
+      //delay.processSignal(inputChannels[0][sample], signal[channel], channel);
+      reverb.processSignal(inputChannels[0][sample], signal[channel], channel);
+      //reverb.processSignal(signal[channel], signal[channel], channel);
       outputChannels[channel][sample] = signal[channel];
       samples++;
       if (thisQueue.size() >= 8) {
