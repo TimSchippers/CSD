@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.20)  
+project(MyProject LANGUAGES CXX) 
+
+add_subdirectory(JUCE) # use add_subdirectory() to link folders
+add_subdirectory(pomo) # JUCE needs to go before your own JUCE projects
+

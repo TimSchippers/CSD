@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+7ec2216b1082a60daece34d33b3ecc53 pomo/pomo_artefacts/JuceLibraryCode/pomo_VST3/PkgInfo
