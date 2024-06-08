@@ -6,14 +6,12 @@ static std::chrono::time_point<std::chrono::steady_clock, std::chrono::duration<
 
 int main() {
   auto programStartTime = getCurrentTime();
-  auto refSecTime = programStartTime;
   int seconds = 0;
   int timerTime = 30 * 60;
 
   while (true) {
-    float elapsedMillis = (getCurrentTime() - refSecTime).count();
+    float elapsedMillis = (getCurrentTime() - programStartTime).count() - seconds;
     if (elapsedMillis >= 1.0f) {
-      elapsedMillis -= 1.0f;
       seconds++;
       timerTime--;
       if (timerTime == 0) {
@@ -21,8 +19,7 @@ int main() {
         std::cout << "run time = " << std::chrono::duration_cast<std::chrono::milliseconds>(totalTime).count() << std::endl;
         return 0;
       }
-      refSecTime = getCurrentTime();
-      std::cout << seconds << std::endl;
+      std::cout << seconds << " " << elapsedMillis << std::endl;
     }
     
   }
