@@ -1277,4 +1277,5 @@ pomo/CMakeFiles/pomo.dir/PluginProcessor.cpp.o: \
   /Users/tim/code/CSD/csd2d/JUCE/modules/juce_audio_processors/utilities/juce_PluginHostType.h \
   /Users/tim/code/CSD/csd2d/JUCE/modules/juce_audio_processors/utilities/ARA/juce_ARADebug.h \
   /Users/tim/code/CSD/csd2d/JUCE/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.h \
+  /Users/tim/code/CSD/csd2d/pomo/timer.h \
   /Users/tim/code/CSD/csd2d/pomo/PluginEditor.h
