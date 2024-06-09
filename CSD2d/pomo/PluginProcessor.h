@@ -44,6 +44,7 @@ public:
   void getStateInformation(juce::MemoryBlock &destData) override;
   void setStateInformation(const void *data, int sizeInBytes) override;
 
+  void startTimer();
   std::string minutes;
   std::string seconds;
 private:

@@ -1279,7 +1279,8 @@ pomo/CMakeFiles/pomo.dir/PluginEditor.cpp.o: /Users/tim/code/CSD/csd2d/pomo/Plug
   /Users/tim/code/CSD/csd2d/JUCE/modules/juce_gui_basics/windows/juce_VBlankAttachment.h \
   /Users/tim/code/CSD/csd2d/JUCE/modules/juce_gui_basics/windows/juce_WindowUtils.h \
   /Users/tim/code/CSD/csd2d/pomo/PluginEditor.h \
-  /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.h
+  /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.h \
+  /Users/tim/code/CSD/csd2d/pomo/timer.h
 
 pomo/CMakeFiles/pomo.dir/PluginProcessor.cpp.o: /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/Availability.h \
@@ -2559,7 +2560,8 @@ pomo/CMakeFiles/pomo.dir/PluginProcessor.cpp.o: /Users/tim/code/CSD/csd2d/pomo/P
   /Users/tim/code/CSD/csd2d/JUCE/modules/juce_gui_basics/windows/juce_VBlankAttachment.h \
   /Users/tim/code/CSD/csd2d/JUCE/modules/juce_gui_basics/windows/juce_WindowUtils.h \
   /Users/tim/code/CSD/csd2d/pomo/PluginEditor.h \
-  /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.h
+  /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.h \
+  /Users/tim/code/CSD/csd2d/pomo/timer.h
 
 pomo/CMakeFiles/pomo.dir/__/JUCE/modules/juce_audio_basics/juce_audio_basics.mm.o: /Users/tim/code/CSD/csd2d/JUCE/modules/juce_audio_basics/juce_audio_basics.mm \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/Headers/Alpha.h \
@@ -29932,6 +29934,12 @@ pomo/CMakeFiles/pomo.dir/__/JUCE/modules/juce_gui_extra/juce_gui_extra.mm.o: /Us
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCoder.h:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/ModelIO.framework/Headers/MDLTransform.h:
+
+/Users/tim/code/CSD/csd2d/JUCE/modules/juce_core/javascript/juce_Javascript.cpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSGridView.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCache.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/climits:
@@ -30692,6 +30700,8 @@ pomo/CMakeFiles/pomo.dir/__/JUCE/modules/juce_gui_extra/juce_gui_extra.mm.o: /Us
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/xlocale.h:
 
+/Users/tim/code/CSD/csd2d/pomo/timer.h:
+
 /Users/tim/code/CSD/csd2d/JUCE/modules/juce_audio_utils/gui/juce_MPEKeyboardComponent.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/CAMediaTiming.h:
@@ -31357,12 +31367,6 @@ pomo/CMakeFiles/pomo.dir/__/JUCE/modules/juce_gui_extra/juce_gui_extra.mm.o: /Us
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__iterator/prev.h:
 
 /Users/tim/code/CSD/csd2d/JUCE/modules/juce_core/logging/juce_FileLogger.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/ModelIO.framework/Headers/MDLTransform.h:
-
-/Users/tim/code/CSD/csd2d/JUCE/modules/juce_core/javascript/juce_Javascript.cpp:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSGridView.h:
 
 /Users/tim/code/CSD/csd2d/JUCE/modules/juce_core/javascript/juce_Javascript.h:
 

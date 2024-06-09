@@ -1281,6 +1281,7 @@ pomo/CMakeFiles/pomo.dir/PluginEditor.cpp.o
  /Users/tim/code/CSD/csd2d/JUCE/modules/juce_gui_basics/windows/juce_WindowUtils.h
  /Users/tim/code/CSD/csd2d/pomo/PluginEditor.h
  /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.h
+ /Users/tim/code/CSD/csd2d/pomo/timer.h
 
 pomo/CMakeFiles/pomo.dir/PluginProcessor.cpp.o
  /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.cpp
@@ -2562,6 +2563,7 @@ pomo/CMakeFiles/pomo.dir/PluginProcessor.cpp.o
  /Users/tim/code/CSD/csd2d/JUCE/modules/juce_gui_basics/windows/juce_WindowUtils.h
  /Users/tim/code/CSD/csd2d/pomo/PluginEditor.h
  /Users/tim/code/CSD/csd2d/pomo/PluginProcessor.h
+ /Users/tim/code/CSD/csd2d/pomo/timer.h
 
 pomo/CMakeFiles/pomo.dir/__/JUCE/modules/juce_audio_basics/juce_audio_basics.mm.o
  /Users/tim/code/CSD/csd2d/JUCE/modules/juce_audio_basics/juce_audio_basics.mm

@@ -12,6 +12,8 @@ AudioPluginAudioProcessor::AudioPluginAudioProcessor()
               .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
       ) {
+  minutes = timer.getMinutes();
+  seconds = timer.getSeconds();
 }
 
 AudioPluginAudioProcessor::~AudioPluginAudioProcessor() {}
@@ -110,6 +112,7 @@ void AudioPluginAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
                                              juce::MidiBuffer &midiMessages) {
   juce::ignoreUnused(midiMessages);
 
+  timer.clockTick();
   minutes = timer.getMinutes();
   seconds = timer.getSeconds();
 
@@ -133,9 +136,12 @@ void AudioPluginAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
   // Alternatively, you can process the samples with the channels
   // interleaved by keeping the same state.
   for (int channel = 0; channel < totalNumInputChannels; ++channel) {
-    auto *channelData = buffer.getWritePointer(channel);
-    juce::ignoreUnused(channelData);
-    // ..do something to the data...
+    auto *writePointer = buffer.getWritePointer(channel);
+    juce::ignoreUnused(writePointer);
+    auto *readPointer = buffer.getReadPointer(channel); 
+    for (auto sample = 0; sample < buffer.getNumSamples(); ++sample) {
+      writePointer[sample] = timer.muteWhenBreak(readPointer[sample]);
+    }
   }
 }
 
@@ -170,3 +176,5 @@ void AudioPluginAudioProcessor::setStateInformation(const void *data,
 juce::AudioProcessor *JUCE_CALLTYPE createPluginFilter() {
   return new AudioPluginAudioProcessor();
 }
+
+void AudioPluginAudioProcessor::startTimer() { timer.start();}
