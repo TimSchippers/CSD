@@ -48,7 +48,7 @@ public:
   std::string minutes;
   std::string seconds;
 private:
-  Timer timer = Timer(13);
+  Timer timer = Timer(1);
   //==============================================================================
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessor)
 };

@@ -1,4 +1,5 @@
 #include <chrono>
+#include <cstdlib>
 #include <string>
 
 class Timer {
@@ -33,9 +34,21 @@ public:
     }
   }
 
-  // TODO add if >10 display as 05:05 now its just 5:5
-  std::string getMinutes() { return std::to_string(countdownSeconds / 60); }
-  std::string getSeconds() { return std::to_string(countdownSeconds % 60); }
+  std::string getMinutes() {
+    if (countdownSeconds / 60 < 10) {
+      return "0" + std::to_string(abs(countdownSeconds / 60));
+    } else {
+      return std::to_string(abs(countdownSeconds / 60));
+    }
+  }
+
+  std::string getSeconds() {
+    if (countdownSeconds % 60 < 10) {
+      return "0" + std::to_string(abs(countdownSeconds % 60));
+    } else {
+      return std::to_string(abs(countdownSeconds % 60));
+    }
+  }
 
 private:
   bool isBreak = false;
