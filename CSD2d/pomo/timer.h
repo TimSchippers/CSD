@@ -52,6 +52,7 @@ public:
         elapsedSeconds++;
         countdownSeconds--;
       }
+      // TODO change "notification: to shorter on/off
       if (countdownSeconds <= 0) {
         overtime = true;
         mute = true;

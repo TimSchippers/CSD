@@ -44,6 +44,6 @@
 
 ## Criteria voor de leerdoelen
 1. Ik heb een goede kijk op wat ik heb gepresteerd op ideegeneratie en programmeer skills in de tijd waarin ik hier mee bezig ben geweest.
-2. Naar mijn idee heb ik dit leerdoel gehaald als ik minimaal 2 projecten in mijn portfolio heb kunnen zetten.
+2. Naar mijn idee heb ik dit leerdoel gehaald als ik minimaal 2 projecten van dit blok in mijn portfolio heb kunnen zetten.
 3. Ik heb een lijstje van geprobeerde methodes en reflectie daarop welke ik wel/niet vond werken.
 4. Ik heb een lijst van ideeën voor de zomervakantie.
