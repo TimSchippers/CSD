@@ -138,7 +138,7 @@ void AudioPluginAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
   for (int channel = 0; channel < totalNumInputChannels; ++channel) {
     auto *writePointer = buffer.getWritePointer(channel);
     juce::ignoreUnused(writePointer);
-    auto *readPointer = buffer.getReadPointer(channel); 
+    auto *readPointer = buffer.getReadPointer(channel);
     for (auto sample = 0; sample < buffer.getNumSamples(); ++sample) {
       writePointer[sample] = timer.muteWhenBreak(readPointer[sample]);
     }
@@ -177,4 +177,10 @@ juce::AudioProcessor *JUCE_CALLTYPE createPluginFilter() {
   return new AudioPluginAudioProcessor();
 }
 
-void AudioPluginAudioProcessor::startTimer(Timer::State state) { timer.start(state);}
+void AudioPluginAudioProcessor::startTimer(Timer::State state) {
+  timer.start(state);
+}
+void AudioPluginAudioProcessor::giveUp() { timer.giveUp(); }
+bool AudioPluginAudioProcessor::getStateTimer() { return timer.getRunning(); }
+bool AudioPluginAudioProcessor::getBreak() { return timer.getIsBreak(); }
+bool AudioPluginAudioProcessor::getoverTime() { return timer.overtime; }

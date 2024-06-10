@@ -13,6 +13,7 @@ public:
   void paint(juce::Graphics &) override;
   void resized() override;
   void timerCallback() override;
+  void showUI();
 
 private:
   // This reference is provided as a quick way for your editor to
@@ -20,6 +21,7 @@ private:
   AudioPluginAudioProcessor &processorRef;
   juce::TextButton startButton;
   juce::TextButton breakButton;
+  juce::TextButton giveUpButton;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessorEditor)
 };
