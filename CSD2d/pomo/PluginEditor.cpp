@@ -9,11 +9,17 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
   addAndMakeVisible(startButton);
-  startButton.setButtonText("start");
+  startButton.setButtonText("Start Work");
   startButton.setVisible(true);
   startButton.setSize(100,20);
   startButton.setCentrePosition(200,200);
-  startButton.onClick = [this] { processorRef.startTimer();};
+  startButton.onClick = [this] { processorRef.startTimer(::Timer::State::workTimer);};
+  addAndMakeVisible(breakButton);
+  breakButton.setButtonText("Start Break");
+  breakButton.setVisible(true);
+  breakButton.setSize(100,20);
+  breakButton.setCentrePosition(200,230);
+  breakButton.onClick = [this] { processorRef.startTimer(::Timer::State::breakTimer);};
   setSize(400, 300);
   startTimer(100);
 }

@@ -177,4 +177,4 @@ juce::AudioProcessor *JUCE_CALLTYPE createPluginFilter() {
   return new AudioPluginAudioProcessor();
 }
 
-void AudioPluginAudioProcessor::startTimer() { timer.start();}
+void AudioPluginAudioProcessor::startTimer(Timer::State state) { timer.start(state);}

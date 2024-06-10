@@ -8,10 +8,25 @@ public:
 
   void prepare(int minutes) { countdownSeconds = minutes * 60; }
 
-  void start() {
-    if (running == false) {
-      timerStartTime = getCurrentTime();
-      running = true;
+  enum State { workTimer, breakTimer };
+
+  void start(State state) {
+    if (changeable == true) {
+      switch (state) {
+      case State::workTimer:
+        prepare(2);
+        timerStartTime = getCurrentTime();
+        running = true;
+        changeable = false;
+        break;
+      case State::breakTimer:
+        prepare(1);
+        timerStartTime = getCurrentTime();
+        mute = true;
+        running = true;
+        changeable = false;
+        break;
+      }
     }
   }
 
@@ -23,11 +38,15 @@ public:
         elapsedSeconds++;
         countdownSeconds--;
       }
+      if (countdownSeconds <= 0) {
+        changeable = true;
+        // TODO notify when need to break
+      }
     }
   }
 
   float muteWhenBreak(float input) {
-    if (isBreak == true) {
+    if (mute == true) {
       return 0;
     } else {
       return input;
@@ -51,15 +70,15 @@ public:
   }
 
 private:
-  bool isBreak = false;
+  bool mute = false;
   bool running = false;
+  bool changeable = true;
   float elapsedMillis;
   float elapsedSeconds;
+  int countdownSeconds;
   std::chrono::time_point<std::chrono::steady_clock,
                           std::chrono::duration<float>>
       timerStartTime;
-
-  int countdownSeconds;
 
   static std::chrono::time_point<std::chrono::steady_clock,
                                  std::chrono::duration<float>>
